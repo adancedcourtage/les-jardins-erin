@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Les jardins d'erin – Cosmétique naturelle et précieuse, huile d'argan, eau de rose, crèmes, savons et soins bio." />
+  <title>Les jardins d'erin – Cosmétique Naturelle & Précieuse</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== DESIGN TOKENS ===================== */
+    :root {
+      --olive:        #6b7c55;
+      --olive-light:  #8a9e6a;
+      --olive-dark:   #4a5740;
+      --sage:         #a8b89a;
+      --sage-light:   #c8d8bc;
+      --rose:         #e8c4c0;
+      --rose-deep:    #d4968e;
+      --rose-soft:    #f5e8e6;
+      --cream:        #faf6f0;
+      --cream-dark:   #f0e8dc;
+      --gold:         #c9a96e;
+      --gold-light:   #e8d5a8;
+      --gold-dark:    #a07840;
+      --text-dark:    #2d2820;
+      --text-mid:     #5c5044;
+      --text-light:   #9c8878;
+      --white:        #ffffff;
+      --border:       rgba(107,124,85,0.18);
+
+      --font-serif:   'Playfair Display', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+
+      --radius-sm:    6px;
+      --radius-md:    14px;
+      --radius-lg:    24px;
+      --radius-xl:    40px;
+
+      --shadow-soft:  0 4px 24px rgba(107,124,85,0.10);
+      --shadow-card:  0 8px 40px rgba(45,40,32,0.08);
+      --shadow-gold:  0 0 30px rgba(201,169,110,0.30);
+    }
+
+    /* ===================== RESET ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body  { font-family: var(--font-sans); background: var(--cream); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
+    img   { display: block; max-width: 100%; }
+    a     { text-decoration: none; color: inherit; }
+
+    /* ===================== UTILITIES ===================== */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--olive); margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--olive); opacity: 0.6;
+    }
+
+    .gold-line {
+      display: block; width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+      border-radius: 2px; margin: 20px auto;
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+    /* ===================== MARQUEE BANNER ===================== */
+    .marquee-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+      background: var(--olive-dark); padding: 8px 0; overflow: hidden;
+    }
+    .marquee-inner {
+      display: flex; width: max-content;
+      animation: marquee-scroll 28s linear infinite;
+    }
+    .marquee-inner:hover { animation-play-state: paused; }
+    .marquee-item {
+      white-space: nowrap; font-size: 12px; font-weight: 500; color: var(--gold-light);
+      letter-spacing: 1px; padding: 0 48px;
+    }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ===================== NAVBAR ===================== */
+    .navbar {
+      position: fixed; left: 0; right: 0; z-index: 1000; padding: 20px 0;
+      transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+    }
+    .navbar.scrolled {
+      background: rgba(250,246,240,0.92); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: var(--olive-dark); }
+    .nav-logo span { color: var(--gold-dark); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-mid); transition: color 0.25s; cursor: pointer; }
+    .nav-links a:hover { color: var(--olive-dark); }
+    .nav-cta {
+      background: var(--olive); color: var(--white) !important; padding: 9px 22px;
+      border-radius: 50px; font-size: 13px !important; font-weight: 600 !important;
+      transition: background 0.25s, box-shadow 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--olive-dark) !important; box-shadow: 0 4px 16px rgba(74,87,64,0.35) !important; }
+    .nav-mobile-btn {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 4px; border: none; background: none;
+    }
+    .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--olive-dark); border-radius: 2px; }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding-top: 100px; background: var(--cream);
+    }
+    .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; pointer-events: none; }
+    .hero-blob-1 { width: 520px; height: 520px; background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%); top: -120px; left: -160px; }
+    .hero-blob-2 { width: 400px; height: 400px; background: radial-gradient(circle, var(--rose) 0%, transparent 70%); bottom: -80px; right: -100px; }
+    .hero-blob-3 { width: 280px; height: 280px; background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%); top: 40%; left: 55%; opacity: 0.35; }
+    .hero-ring { position: absolute; border-radius: 50%; border: 1px solid; pointer-events: none; animation: ring-pulse 6s ease-in-out infinite; }
+    .hero-ring-1 { width: 440px; height: 440px; border-color: rgba(107,124,85,0.12); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .hero-ring-2 { width: 620px; height: 620px; border-color: rgba(107,124,85,0.07); top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 1.5s; }
+    @keyframes ring-pulse {
+      0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+      50%      { transform: translate(-50%,-50%) scale(1.03); opacity: 0.7; }
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 920px; padding: 0 24px; }
+    .hero-eyebrow {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--olive); margin-bottom: 28px;
+      opacity: 0; animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
+    }
+    .hero-title {
+      font-family: var(--font-serif); font-size: clamp(32px, 5.2vw, 72px); font-weight: 400;
+      color: var(--olive-dark); line-height: 1.05; letter-spacing: -1px; margin-bottom: 24px;
+      white-space: nowrap;
+    }
+    .hero-title .letter { display: inline-block; opacity: 0; transform: translateY(20px); animation: letter-appear 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .hero-title .word-gap { display: inline-block; width: 0.28em; }
+    .hero-subtitle {
+      font-size: clamp(16px,2.2vw,20px); color: var(--text-mid); font-weight: 300; line-height: 1.65; margin-bottom: 40px;
+      opacity: 0; animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 1.6s forwards;
+    }
+    .hero-subtitle em { font-style: italic; font-family: var(--font-serif); color: var(--olive); }
+    .hero-cta-group {
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 1.9s forwards;
+    }
+    .hero-badge {
+      position: absolute; background: var(--white); border-radius: var(--radius-md); padding: 12px 18px;
+      box-shadow: var(--shadow-card); display: flex; align-items: center; gap: 10px;
+      animation: float 4s ease-in-out infinite; z-index: 3;
+    }
+    .hero-badge-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .hero-badge-text { font-size: 12px; font-weight: 600; color: var(--text-dark); line-height: 1.3; }
+    .hero-badge-sub  { font-size: 10px; color: var(--text-light); }
+    .badge-natural { top: 20%; left: 5%; animation-delay: 0s; }
+    .badge-argan   { bottom: 20%; right: 4%; animation-delay: 1.5s; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      opacity: 0; animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) 2.4s forwards;
+    }
+    .scroll-hint span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); }
+    .scroll-wheel { width: 22px; height: 36px; border: 1.5px solid var(--sage); border-radius: 12px; display: flex; justify-content: center; padding-top: 6px; }
+    .scroll-wheel-dot { width: 4px; height: 8px; background: var(--olive); border-radius: 2px; animation: scroll-dot 1.8s ease-in-out infinite; }
+    @keyframes scroll-dot { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes letter-appear { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ===================== BUTTONS ===================== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px; background: var(--olive-dark); color: var(--cream);
+      font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
+      padding: 16px 36px; border-radius: 50px; border: none; cursor: pointer; position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-primary::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255,255,255,0.25), transparent 70%); opacity: 0; transition: opacity 0.35s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--olive-dark);
+      font-size: 14px; font-weight: 500; padding: 15px 28px; border-radius: 50px;
+      border: 1.5px solid var(--olive); cursor: pointer; transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-secondary:hover { background: rgba(107,124,85,0.08); border-color: var(--olive-dark); }
+
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 7px; background: #25D366; color: var(--white);
+      font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: 50px; border: none;
+      cursor: pointer; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; white-space: nowrap;
+    }
+    .btn-whatsapp:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37,211,102,0.35); }
+    .btn-whatsapp:focus-visible { outline: 3px solid #25D366; outline-offset: 3px; }
+    .wa-icon { width: 16px; height: 16px; fill: white; flex-shrink: 0; }
+
+    .btn-wa-big {
+      display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: var(--white);
+      font-family: var(--font-sans); font-size: 16px; font-weight: 700; padding: 18px 44px; border-radius: 50px;
+      border: none; cursor: pointer; transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.30);
+    }
+    .btn-wa-big:hover { background: #1ebe5a; transform: translateY(-4px); box-shadow: 0 16px 40px rgba(37,211,102,0.40); }
+    .wa-big-icon { width: 24px; height: 24px; fill: white; }
+
+    /* ===================== SECTIONS ===================== */
+    section { padding: 100px 0; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(32px,5vw,52px); font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
+    .section-title em { font-style: italic; color: var(--olive); }
+    .section-desc { font-size: 16px; color: var(--text-light); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    /* ===================== ABOUT STRIP ===================== */
+    .about-strip { background: var(--olive-dark); padding: 72px 0; }
+    .about-strip-inner { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .about-strip-item { padding: 40px 32px; text-align: center; position: relative; }
+    .about-strip-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px; background: rgba(255,255,255,0.12); }
+    .about-icon { width: 52px; height: 52px; background: rgba(255,255,255,0.10); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 22px; }
+    .about-strip-item h3 { font-family: var(--font-serif); font-size: 20px; color: var(--gold-light); margin-bottom: 8px; }
+    .about-strip-item p  { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* ===================== PRODUCT CARDS ===================== */
+    .products { background: var(--cream); }
+    .products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+
+    .product-card {
+      background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-card); position: relative; cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(45,40,32,0.14); }
+    .product-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* Product image area */
+    .product-visual {
+      width: 100%; aspect-ratio: 4/3; position: relative; overflow: hidden;
+    }
+    .product-visual img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .product-card:hover .product-visual img { transform: scale(1.06); }
+
+    /* Fallback placeholder (no photo) */
+    .product-visual-placeholder {
+      width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+      font-size: 48px; position: relative; overflow: hidden;
+    }
+    .product-card:hover .product-visual-placeholder .placeholder-icon { transform: scale(1.10) rotate(-5deg); }
+    .placeholder-icon { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); display: block; }
+
+    .product-badge {
+      position: absolute; top: 14px; right: 14px; background: var(--olive-dark); color: var(--gold-light);
+      font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 50px; z-index: 2;
+    }
+
+    .product-info { padding: 20px 24px 24px; }
+    .product-name { font-family: var(--font-serif); font-size: 19px; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; }
+    .product-tagline { font-size: 12px; color: var(--text-light); margin-bottom: 16px; line-height: 1.5; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--olive-dark); }
+    .product-price-unit { font-size: 11px; color: var(--text-light); margin-top: 1px; }
+
+    /* ===================== COLLECTIONS ===================== */
+    .collections { background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%); }
+    .collections-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+
+    .collection-card {
+      background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-card); position: relative; cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .collection-card:hover { transform: translateY(-10px); box-shadow: 0 24px 70px rgba(45,40,32,0.15); }
+
+    .collection-visual { width: 100%; aspect-ratio: 3/4; position: relative; overflow: hidden; }
+    .collection-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .collection-card:hover .collection-visual img { transform: scale(1.05); }
+
+    /* Gold overlay on hover */
+    .collection-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(45,40,32,0.55) 0%, transparent 50%);
+    }
+
+    .collection-badge-top {
+      position: absolute; top: 16px; left: 16px; z-index: 3;
+      background: var(--gold); color: var(--olive-dark);
+      font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .collection-info {
+      padding: 20px 24px 26px;
+      border-top: 1px solid var(--border);
+    }
+    .collection-name {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 500;
+      color: var(--text-dark); margin-bottom: 6px; line-height: 1.25;
+    }
+    .collection-composition {
+      font-size: 12px; color: var(--text-light); margin-bottom: 18px; line-height: 1.6;
+    }
+    .collection-composition strong { color: var(--olive); }
+    .collection-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+    .collection-pricing {}
+    .collection-price-was {
+      font-size: 12px; color: var(--text-light); text-decoration: line-through; margin-bottom: 2px;
+    }
+    .collection-price {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 700;
+      color: var(--olive-dark); line-height: 1;
+    }
+    .collection-savings {
+      font-size: 11px; font-weight: 600; color: #16a34a; margin-top: 3px;
+    }
+
+    /* ===================== OFFER CALLOUT ===================== */
+    .offer-section { padding: 48px 0; background: var(--cream-dark); }
+    .offer-callout {
+      background: linear-gradient(135deg, var(--olive-dark) 0%, var(--olive) 100%);
+      border-radius: var(--radius-xl); padding: 64px 56px;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px;
+      position: relative; overflow: hidden; margin: 0 24px;
+    }
+    .offer-callout::before { content: ''; position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(201,169,110,0.25) 0%, transparent 70%); border-radius: 50%; }
+    .offer-text h2 { font-family: var(--font-serif); font-size: clamp(24px,4vw,42px); font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 14px; }
+    .offer-text h2 span { color: var(--gold-light); font-style: italic; }
+    .offer-text p { font-size: 15px; color: rgba(255,255,255,0.72); max-width: 440px; line-height: 1.7; }
+    .offer-badge-big {
+      background: var(--gold); color: var(--olive-dark); font-family: var(--font-serif);
+      font-size: 48px; font-weight: 700; width: 140px; height: 140px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      line-height: 1; flex-shrink: 0; box-shadow: var(--shadow-gold);
+    }
+    .offer-badge-big span { font-family: var(--font-sans); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ===================== HOW IT WORKS ===================== */
+    .how-it-works { background: linear-gradient(180deg, var(--cream) 0%, var(--rose-soft) 100%); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 40px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--sage-light), var(--gold-light), var(--sage-light), transparent); }
+    .step-card { text-align: center; padding: 32px 20px; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
+    .step-number { width: 52px; height: 52px; background: var(--olive-dark); color: var(--gold-light); font-family: var(--font-serif); font-size: 20px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(74,87,64,0.25); }
+    .step-icon { font-size: 28px; margin-bottom: 14px; }
+    .step-card h3 { font-family: var(--font-serif); font-size: 17px; color: var(--text-dark); margin-bottom: 8px; }
+    .step-card p  { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials { background: var(--white); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .testi-card { background: var(--cream); border-radius: var(--radius-lg); padding: 32px 28px; position: relative; }
+    .testi-card::before { content: '\201C'; font-family: var(--font-serif); font-size: 72px; color: var(--sage-light); position: absolute; top: 12px; left: 22px; line-height: 1; opacity: 0.6; }
+    .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+    .testi-text { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; font-style: italic; font-family: var(--font-serif); }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--white); flex-shrink: 0; }
+    .av-1 { background: linear-gradient(135deg, var(--olive), var(--olive-dark)); }
+    .av-2 { background: linear-gradient(135deg, var(--rose-deep), #c07870); }
+    .av-3 { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); }
+    .testi-name { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .testi-loc  { font-size: 11px; color: var(--text-light); }
+
+    /* ===================== WHATSAPP CTA ===================== */
+    .whatsapp-cta { background: var(--cream); padding: 80px 0; }
+    .whatsapp-cta-inner { max-width: 700px; margin: 0 auto; text-align: center; padding: 0 24px; }
+    .whatsapp-cta-inner h2 { font-family: var(--font-serif); font-size: clamp(28px,5vw,48px); font-weight: 400; color: var(--text-dark); margin-bottom: 16px; }
+    .whatsapp-cta-inner p { color: var(--text-light); margin-bottom: 36px; font-size: 16px; line-height: 1.7; }
+
+    /* ===================== FOOTER ===================== */
+    .footer { background: var(--text-dark); padding: 60px 0 32px; }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 24px; color: var(--cream); margin-bottom: 12px; }
+    .footer-brand h3 span { color: var(--gold); }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.50); line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.25s; cursor: pointer; }
+    .footer-col ul li a:hover { color: var(--cream); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .footer-made span { color: var(--rose-deep); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      .products-grid, .collections-grid { grid-template-columns: repeat(2,1fr); }
+      .steps-grid { grid-template-columns: repeat(2,1fr); }
+      .steps-grid::before { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .offer-callout { grid-template-columns: 1fr; text-align: center; }
+      .offer-badge-big { margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding-top: 120px; }
+      .about-strip-inner { grid-template-columns: 1fr; }
+      .about-strip-item::after { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-badge { display: none; }
+      .offer-callout { padding: 44px 32px; margin: 0 16px; }
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .offer-callout { padding: 36px 24px; }
+      .hero-title { white-space: normal; font-size: clamp(30px, 9vw, 48px); }
+    }
+
+    /* Mobile nav */
+    .mobile-nav { position: fixed; inset: 0; z-index: 2000; display: none; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(3px); animation: fade-in 0.3s ease; }
+    .mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: min(320px,88vw); background: var(--cream); padding: 32px 28px; display: flex; flex-direction: column; gap: 8px; animation: slide-in-right 0.35s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slide-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .mobile-nav-close { align-self: flex-end; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-mid); padding: 4px; margin-bottom: 16px; }
+    .mobile-nav-link { font-family: var(--font-serif); font-size: 22px; color: var(--text-dark); padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: color 0.25s; }
+    .mobile-nav-link:hover { color: var(--olive); }
+
+    /* ===================== DETAIL PAGE ===================== */
+    .detail-page {
+      position: fixed; inset: 0; z-index: 5000;
+      background: var(--cream); overflow-y: auto; overscroll-behavior: contain;
+      transform: translateX(100%); visibility: hidden;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), visibility 0.45s;
+    }
+    .detail-page.open { transform: translateX(0); visibility: visible; }
+
+    .detail-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(250,246,240,0.94); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px; gap: 16px;
+    }
+    .detail-back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: none; border: 1.5px solid var(--border); border-radius: 50px;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--text-mid); padding: 9px 18px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .detail-back-btn:hover { border-color: var(--olive); color: var(--olive-dark); background: rgba(107,124,85,0.06); }
+    .detail-back-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+    .detail-header-logo {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 600; color: var(--olive-dark); flex: 1; text-align: center;
+    }
+    .detail-header-logo span { color: var(--gold-dark); }
+
+    .detail-content {
+      display: grid; grid-template-columns: 48% 52%;
+      min-height: calc(100vh - 65px);
+    }
+
+    /* Left – Gallery */
+    .detail-gallery {
+      position: sticky; top: 65px; height: calc(100vh - 65px);
+      background: var(--cream-dark); overflow: hidden;
+    }
+    .detail-gallery img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+    }
+    .detail-gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; font-size: 80px;
+    }
+
+    /* Right – Info */
+    .detail-info {
+      padding: 52px 52px 80px;
+      display: flex; flex-direction: column;
+    }
+    .detail-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--text-light); margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    .detail-breadcrumb a { cursor: pointer; transition: color 0.2s; }
+    .detail-breadcrumb a:hover { color: var(--olive); }
+    .detail-breadcrumb-sep { opacity: 0.4; }
+    .detail-category-tag {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--olive); background: rgba(107,124,85,0.10);
+      padding: 4px 12px; border-radius: 50px; margin-bottom: 14px;
+    }
+    .detail-name {
+      font-family: var(--font-serif); font-size: clamp(28px,3.5vw,48px); font-weight: 400;
+      color: var(--text-dark); line-height: 1.15; margin-bottom: 16px;
+    }
+    .detail-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .detail-price-main { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--olive-dark); }
+    .detail-price-was { font-size: 16px; color: var(--text-light); text-decoration: line-through; }
+    .detail-price-unit { font-size: 13px; color: var(--text-light); margin-bottom: 28px; }
+    .detail-divider { width: 100%; height: 1px; background: var(--border); margin: 28px 0; }
+
+    .detail-desc { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 32px; }
+
+    .detail-section { margin-bottom: 24px; }
+    .detail-section-title {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 10px;
+    }
+    .detail-section-body { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+    .detail-benefits {
+      list-style: none; display: flex; flex-direction: column; gap: 8px;
+    }
+    .detail-benefits li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text-mid); line-height: 1.6;
+    }
+    .detail-benefits li::before {
+      content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
+      background: var(--sage-light); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%234a5740' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center; background-size: 10px;
+    }
+    .detail-wa-btn {
+      display: inline-flex; align-items: center; gap: 12px; background: #25D366; color: var(--white);
+      font-family: var(--font-sans); font-size: 15px; font-weight: 700;
+      padding: 16px 36px; border-radius: 50px; border: none; cursor: pointer; margin-top: 36px;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 8px 28px rgba(37,211,102,0.28); align-self: flex-start;
+    }
+    .detail-wa-btn:hover { background: #1ebe5a; transform: translateY(-3px); box-shadow: 0 14px 36px rgba(37,211,102,0.38); }
+    .detail-wa-icon { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+    /* Collection detail extras */
+    .detail-composition-includes {
+      display: flex; flex-direction: column; gap: 6px; margin-top: 10px;
+    }
+    .detail-comp-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-mid);
+      background: var(--cream-dark); border-radius: 8px; padding: 8px 14px;
+    }
+    .detail-comp-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* Responsive detail */
+    @media (max-width: 900px) {
+      .detail-content { grid-template-columns: 1fr; }
+      .detail-gallery { position: relative; top: 0; height: 55vw; min-height: 280px; max-height: 420px; }
+      .detail-info { padding: 36px 28px 60px; }
+    }
+    @media (max-width: 480px) {
+      .detail-header { padding: 12px 16px; }
+      .detail-header-logo { font-size: 15px; }
+      .detail-back-btn { padding: 7px 12px; font-size: 12px; }
+      .detail-info { padding: 28px 20px 56px; }
+      .detail-name { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================== MARQUEE ======================== -->
+  <div class="marquee-banner" role="marquee" aria-label="Offre spéciale en cours">
+    <div class="marquee-inner" id="marqueeInner"></div>
+  </div>
+
+  <!-- ======================== NAVBAR ======================== -->
+  <nav class="navbar" id="navbar" aria-label="Navigation principale">
+    <div class="container">
+      <a class="nav-logo" href="#" aria-label="Les jardins d'erin">Les jardins <span>d'erin</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#produits">Catalogue</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#processus">Commander</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a class="nav-cta" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer">Commander</a></li>
+      </ul>
+      <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fermer le menu">✕</button>
+      <a class="mobile-nav-link" href="#produits">Catalogue</a>
+      <a class="mobile-nav-link" href="#collections">Collections</a>
+      <a class="mobile-nav-link" href="#processus">Commander</a>
+      <a class="mobile-nav-link" href="#avis">Avis Clients</a>
+      <a class="mobile-nav-link" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander" target="_blank" rel="noopener noreferrer" style="color:var(--olive);font-weight:600;">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero" id="accueil" aria-label="Bienvenue">
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
+    <div class="hero-ring hero-ring-1" aria-hidden="true"></div>
+    <div class="hero-ring hero-ring-2" aria-hidden="true"></div>
+
+    <div class="hero-badge badge-natural" aria-hidden="true">
+      <div class="hero-badge-icon" style="background:var(--sage-light);">🌿</div>
+      <div><div class="hero-badge-text">100% Naturel</div><div class="hero-badge-sub">Ingrédients purs</div></div>
+    </div>
+    <div class="hero-badge badge-argan" aria-hidden="true">
+      <div class="hero-badge-icon" style="background:var(--gold-light);">✨</div>
+      <div><div class="hero-badge-text">Huile d'Argan</div><div class="hero-badge-sub">Or liquide du Maroc</div></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Cosmétique Naturelle & Précieuse</p>
+      <h1 class="hero-title" id="heroTitle" aria-label="Les jardins d'erin"></h1>
+      <p class="hero-subtitle"><em>La cosmétique naturelle et précieuse,</em><br>directement chez vous.</p>
+      <div class="hero-cta-group">
+        <a class="btn-primary" href="#produits" role="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Découvrir la collection
+        </a>
+        <a class="btn-secondary" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Nous contacter
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Défiler</span>
+      <div class="scroll-wheel"><div class="scroll-wheel-dot"></div></div>
+    </div>
+  </section>
+
+  <!-- ======================== ABOUT STRIP ======================== -->
+  <div class="about-strip" aria-label="Nos engagements">
+    <div class="container">
+      <div class="about-strip-inner">
+        <div class="about-strip-item reveal">
+          <div class="about-icon" aria-hidden="true">🌿</div>
+          <h3>100% Naturel</h3>
+          <p>Des formules pures, sans additifs chimiques, respectueuses de votre peau et de la nature.</p>
+        </div>
+        <div class="about-strip-item reveal reveal-delay-2">
+          <div class="about-icon" aria-hidden="true">✨</div>
+          <h3>Ingrédients Précieux</h3>
+          <p>Huile d'argan, eau de rose, plantes rares – le meilleur de la nature pour votre beauté.</p>
+        </div>
+        <div class="about-strip-item reveal reveal-delay-3">
+          <div class="about-icon" aria-hidden="true">🚚</div>
+          <h3>Livraison Directe</h3>
+          <p>Commandez sur WhatsApp et recevez vos soins directement à votre porte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== PRODUCTS ======================== -->
+  <section class="products" id="produits" aria-label="Catalogue produits">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Boutique</span>
+        <h2 class="section-title">Notre <em>Catalogue</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="section-desc">Des soins formulés avec les trésors de la nature. Choisissez vos favoris et commandez en un instant.</p>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======================== OFFER CALLOUT ======================== -->
+  <div class="offer-section" aria-label="Offre spéciale">
+    <div class="container">
+      <div class="offer-callout reveal">
+        <div class="offer-text">
+          <span class="section-label" style="color:var(--gold-light);">Offre Exclusive</span>
+          <h2>Profitez de <span>-10% de remise</span><br>immédiate !</h2>
+          <p>À partir de 2 produits achetés, bénéficiez automatiquement d'une réduction de 10% sur l'ensemble de votre commande. L'occasion parfaite pour découvrir plusieurs soins.</p>
+        </div>
+        <div class="offer-badge-big" aria-label="10% de réduction dès 2 produits">
+          <span>Dès</span>-10%<span>2 produits</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== COLLECTIONS ======================== -->
+  <section class="collections" id="collections" aria-label="Nos collections">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Coffrets & Rituels</span>
+        <h2 class="section-title">Nos <em>Collections</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="section-desc">Des ensembles soigneusement sélectionnés pour une routine beauté complète. Idéaux aussi en cadeau.</p>
+      </div>
+      <div class="collections-grid" id="collectionsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======================== HOW IT WORKS ======================== -->
+  <section class="how-it-works" id="processus" aria-label="Comment commander">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Commandez</span>
+        <h2 class="section-title">En un <em>clic</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="section-desc">Un processus simple et rapide via WhatsApp, directement depuis cette page.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-icon" aria-hidden="true">👁️</div>
+          <h3>Choisissez</h3>
+          <p>Parcourez notre catalogue et sélectionnez les produits qui vous correspondent.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-icon" aria-hidden="true">💬</div>
+          <h3>Cliquez sur Commander</h3>
+          <p>Un simple clic ouvre automatiquement un message WhatsApp pré-rempli.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-icon" aria-hidden="true">✅</div>
+          <h3>Confirmez</h3>
+          <p>Envoyez le message et nous confirmons votre commande rapidement.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-4">
+          <div class="step-number" aria-hidden="true">4</div>
+          <div class="step-icon" aria-hidden="true">🎁</div>
+          <h3>Recevez</h3>
+          <p>Vos soins vous sont livrés directement chez vous, soigneusement emballés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== TESTIMONIALS ======================== -->
+  <section class="testimonials" id="avis" aria-label="Avis clients">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Témoignages</span>
+        <h2 class="section-title">Ce qu'elles en <em>disent</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="section-desc">La satisfaction de nos clientes est notre plus belle récompense.</p>
+      </div>
+      <div class="testi-grid">
+        <article class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars" aria-label="5 étoiles">★★★★★</div>
+          <p class="testi-text">"L'huile d'argan est absolument divine. Ma peau n'a jamais été aussi douce et lumineuse. Je recommande les yeux fermés !"</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-1" aria-hidden="true">S</div>
+            <div><div class="testi-name">Sophia M.</div><div class="testi-loc">Paris, France</div></div>
+          </div>
+        </article>
+        <article class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars" aria-label="5 étoiles">★★★★★</div>
+          <p class="testi-text">"L'eau de rose est un must-have dans ma routine beauté. Un parfum délicat et une fraîcheur incomparable. Je suis conquise !"</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-2" aria-hidden="true">A</div>
+            <div><div class="testi-name">Amina K.</div><div class="testi-loc">Lyon, France</div></div>
+          </div>
+        </article>
+        <article class="testi-card reveal reveal-delay-3">
+          <div class="testi-stars" aria-label="5 étoiles">★★★★★</div>
+          <p class="testi-text">"Le gommage rose est incroyable ! Ma peau est soyeuse après chaque utilisation. Et la commande via WhatsApp est vraiment pratique."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-3" aria-hidden="true">L</div>
+            <div><div class="testi-name">Laure D.</div><div class="testi-loc">Bordeaux, France</div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== WA CTA ======================== -->
+  <div class="whatsapp-cta" aria-label="Commander maintenant">
+    <div class="whatsapp-cta-inner reveal">
+      <span class="section-label">Commander</span>
+      <h2>Prête à prendre soin de vous ?</h2>
+      <p>Écrivez-nous directement sur WhatsApp et recevez vos soins naturels chez vous en toute simplicité.</p>
+      <a class="btn-wa-big" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" aria-label="Commander sur WhatsApp">
+        <svg class="wa-big-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Commander sur WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>Les jardins <span>d'erin</span></h3>
+          <p>Cosmétique naturelle et précieuse, sublimée par les trésors botaniques. Chaque soin est une invitation à prendre soin de vous.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#produits">Catalogue</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#processus">Commander</a></li>
+            <li><a href="#avis">Avis Clients</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="https://wa.me/33672623296" target="_blank" rel="noopener noreferrer">WhatsApp : +33 6 72 62 32 96</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Les jardins d'erin – Tous droits réservés</p>
+        <p class="footer-made">Fait avec <span>♥</span> pour votre beauté naturelle</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================== DETAIL PAGE ======================== -->
+  <div id="detailPage" class="detail-page" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Détail produit">
+
+    <header class="detail-header">
+      <button id="detailBack" class="detail-back-btn" aria-label="Retour au catalogue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        Retour
+      </button>
+      <span class="detail-header-logo" aria-hidden="true">Les jardins <span>d'erin</span></span>
+      <a id="detailHeaderWa" class="btn-primary" href="#" target="_blank" rel="noopener noreferrer" style="font-size:13px;padding:10px 22px;" aria-label="Commander ce produit sur WhatsApp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Commander
+      </a>
+    </header>
+
+    <div class="detail-content">
+      <!-- Left: Visual -->
+      <div class="detail-gallery" id="detailGallery">
+        <img id="detailImg" src="" alt="" />
+      </div>
+
+      <!-- Right: Info -->
+      <div class="detail-info">
+        <nav class="detail-breadcrumb" aria-label="Fil d'ariane">
+          <a id="detailBreadcrumbBack" tabindex="0">Catalogue</a>
+          <span class="detail-breadcrumb-sep" aria-hidden="true">›</span>
+          <span id="detailBreadcrumbName"></span>
+        </nav>
+
+        <span id="detailCategoryTag" class="detail-category-tag"></span>
+        <h1 id="detailName" class="detail-name"></h1>
+
+        <div class="detail-price-row">
+          <span id="detailPriceMain" class="detail-price-main"></span>
+          <span id="detailPriceWas" class="detail-price-was" hidden></span>
+        </div>
+        <p class="detail-price-unit" id="detailPriceUnit">par unité</p>
+
+        <div class="detail-divider"></div>
+
+        <p id="detailDesc" class="detail-desc"></p>
+
+        <div class="detail-section">
+          <h2 class="detail-section-title">Composition</h2>
+          <p id="detailComposition" class="detail-section-body"></p>
+        </div>
+
+        <div class="detail-section">
+          <h2 class="detail-section-title">Bienfaits</h2>
+          <ul id="detailBenefits" class="detail-benefits"></ul>
+        </div>
+
+        <div class="detail-section">
+          <h2 class="detail-section-title">Conseils d'application</h2>
+          <p id="detailUsage" class="detail-section-body"></p>
+        </div>
+
+        <a id="detailWaBtn" class="detail-wa-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Commander sur WhatsApp">
+          <svg class="detail-wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Commander sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== JS ======================== -->
+  <script>
+    /* ======== SVG WhatsApp icon ======== */
+    const WA_SVG = `<svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>`;
+
+    function waLink(text) {
+      return `https://wa.me/33672623296?text=${encodeURIComponent("Bonjour Les jardins d'erin, " + text + " 🌿")}`;
+    }
+
+    /* ======== PRODUCTS ======== */
+    const products = [
+      {
+        name: "Gommage à l'Argan",
+        price: "7,90 €", category: "Soin Exfoliant",
+        tagline: "Exfoliation argan Face & Body – peau neuve et satinée",
+        img: "images/gommage-argan.jpg", badge: "Bestseller",
+        description: "Un gommage exfoliant double-action pour le visage et le corps. Enrichi en huile d'argan vierge pressée à froid, il libère la peau des impuretés tout en l'enveloppant d'une nutrition profonde. Sa texture crémeuse et son action douce le rendent adapté à toutes les peaux.",
+        composition: "Huile d'Argan vierge (Argania Spinosa), sel de mer naturel, beurre de karité, glycérine végétale, huiles essentielles naturelles.",
+        benefits: ["Élimine les cellules mortes et purifie les pores en profondeur","Nourrit et répare grâce aux acides gras de l'huile d'argan","Unifie le teint et estompe les irrégularités","Peau satinée, douce et lumineuse dès la première utilisation"],
+        usage: "Appliquer sur peau humide en mouvements circulaires doux. Laisser agir 2 minutes, puis rincer à l'eau tiède. Utiliser 2 à 3 fois par semaine pour un résultat optimal.",
+        waText: "je souhaite commander le Gommage Argan (7,90€)"
+      },
+      {
+        name: "Gommage à la Rose",
+        price: "7,90 €", category: "Soin Exfoliant",
+        tagline: "Gommage floral Face & Body – douceur et éclat rosé",
+        img: "images/gommage-rose.jpg", badge: null,
+        description: "Un gommage floral délicat qui associe les vertus de la rose aux bienfaits de l'exfoliation naturelle. Sa texture crémeuse rosée éveille les sens tout en révélant une peau visiblement plus douce, plus lisse et plus éclatante.",
+        composition: "Extrait de pétales de rose, sucre naturel fin, huile de rose, beurre de cacao, glycérine végétale, parfum floral naturel.",
+        benefits: ["Exfolie délicatement, idéal pour les peaux sensibles","Parfum floral naturel enivrant à la rose","Peau satinée, rosée et lumineuse après chaque soin","Convient à tous les types de peau, visage et corps"],
+        usage: "Appliquer sur peau humide. Masser délicatement en mouvements circulaires. Rincer à l'eau tiède. Utiliser 1 à 2 fois par semaine.",
+        waText: "je souhaite commander le Gommage Rose (7,90€)"
+      },
+      {
+        name: "Crème à l'Argan",
+        price: "6,90 €", category: "Soin Visage",
+        tagline: "Hydratation intense et nutrition profonde à l'huile d'argan",
+        img: "images/creme-argan.jpg", badge: null,
+        description: "La Crème à l'Argan Deltx est une crème hydratante concentrée qui offre une nutrition intense grâce à la précieuse huile d'argan du Maroc. Sa formule riche pénètre rapidement sans laisser de film gras, laissant la peau lissée et repulpée.",
+        composition: "Huile d'Argan (Argania Spinosa), eau florale, beurre de karité, acide hyaluronique végétal, vitamine E, extrait d'aloé véra.",
+        benefits: ["Hydratation intense et longue durée toute la journée","Nourrit et assouplit les peaux sèches et déshydratées","Propriétés anti-âge naturelles grâce à la vitamine E","Peau lissée et repulpée dès les premières applications"],
+        usage: "Appliquer le matin et/ou le soir sur visage et cou préalablement nettoyés. Masser délicatement en mouvements ascendants jusqu'à complète absorption.",
+        waText: "je souhaite commander la Crème Argan (6,90€)"
+      },
+      {
+        name: "Crème de Rose",
+        price: "6,90 €", category: "Soin Visage",
+        tagline: "Soin visage à la rose – éclat naturel et teint unifié",
+        img: "images/creme-rose.jpg", badge: null,
+        description: "La Crème de Rose Deltx est un soin visage à l'extrait de rose conçu pour illuminer le teint et redonner éclat et jeunesse. Sa texture légère et son parfum floral délicat en font un rituel beauté inoubliable qui sublime la peau au quotidien.",
+        composition: "Eau de rose distillée, extrait de rose (Rosa Damascena), huile de rose, beurre de karité, glycérine végétale, vitamine C, acide hyaluronique.",
+        benefits: ["Illumine et unifie le teint naturellement dès 2 semaines","Propriétés anti-âge et antioxydantes de la rose","Hydratation légère et texture non grasse","Parfum floral naturel délicat qui persiste sur la peau"],
+        usage: "Appliquer le matin et/ou le soir sur visage et cou propres. Effectuer de légers mouvements ascendants pour stimuler la microcirculation et optimiser l'absorption.",
+        waText: "je souhaite commander la Crème de Rose (6,90€)"
+      },
+      {
+        name: "Savon à l'Argan",
+        price: "4,50 €", category: "Soin Corps",
+        tagline: "Savon artisanal Assif – purifie et nourrit la peau",
+        img: "images/savon-argan.jpg", badge: null,
+        description: "Le Savon à l'Argan Assif est un savon artisanal authentique, fabriqué selon les méthodes traditionnelles marocaines. Enrichi en huile d'argan pure, il nettoie en profondeur tout en préservant le film hydrolipidique naturel de la peau pour un résultat doux et nourri.",
+        composition: "Huile d'argan vierge, huile d'olive extra vierge, glycérine naturelle, soude végétale, parfum naturel d'argan.",
+        benefits: ["Nettoyage doux respectant le pH naturel de la peau","Nourrit et protège la peau lors du lavage quotidien","Idéal pour le visage et le corps","Formule artisanale, sans agent chimique agressif"],
+        usage: "Utiliser quotidiennement sous l'eau. Faire mousser entre les mains ou avec un gant de toilette. Rincer abondamment à l'eau claire.",
+        waText: "je souhaite commander le Savon Argan (4,50€)"
+      },
+      {
+        name: "Huile d'Argan",
+        price: "12,00 €", category: "Huile Précieuse",
+        tagline: "L'or liquide du Maroc – Bio, non torréfiée, multi-usages",
+        img: "images/huile-argan.jpg", badge: "Précieux",
+        description: "Notre Huile d'Argan Bio est extraite à froid de noix d'arganier des forêts du Souss au Maroc. Non torréfiée et 100% pure, elle préserve tous ses acides gras essentiels et sa richesse en vitamine E. L'or liquide du Maroc, un trésor multi-usages pour la peau, le visage et les cheveux.",
+        composition: "100% Huile d'Argan Cosmétique (Argania Spinosa Kernel Oil), pressée à froid, non torréfiée. Certifiée Bio. Aucun additif.",
+        benefits: ["Nourrit intensément peau, visage et cheveux en profondeur","Propriétés anti-âge et réparatrices cliniquement prouvées","Riche en acides gras oméga-6 et vitamine E naturelle","Régule la production de sébum pour les peaux mixtes","Multi-usages : corps, visage, ongles, pointes, barbe"],
+        usage: "Visage : 2 à 3 gouttes sur peau propre, masser doucement le soir. Cheveux : quelques gouttes sur les pointes sèches ou en masque avant shampooing. Corps : après la douche, sur peau légèrement humide.",
+        waText: "je souhaite commander l'Huile d'Argan (12,00€)"
+      },
+      {
+        name: "Shampooing Argan",
+        price: "9,90 €", category: "Soin Capillaire",
+        tagline: "Derhum Professional – protéine + kératine, tous types de cheveux",
+        img: "images/shampooing-argan.jpg", badge: null,
+        description: "Le Shampooing Argan Derhum Professional est un soin capillaire enrichi en huile d'argan, protéines et kératine. Formulé pour tous les types de cheveux, il restaure la brillance, la douceur et la vitalité des cheveux abîmés ou ternes grâce à une synergie d'actifs réparateurs.",
+        composition: "Huile d'Argan (Argania Spinosa), protéine de soie hydrolysée, kératine végétale, panthénol (Pro-vitamine B5), extraits de plantes nourrissants.",
+        benefits: ["Restaure la brillance et la douceur des cheveux ternes","Renforce la fibre capillaire grâce à la kératine végétale","Nourrit en profondeur sans alourdir ni rendre gras","Convient à tous les types de cheveux, même colorés","Formule douce, sans parabènes ni sulfates agressifs"],
+        usage: "Appliquer sur cheveux mouillés, masser le cuir chevelu et les longueurs. Laisser agir 2 minutes puis rincer abondamment. Utiliser régulièrement pour des résultats durables.",
+        waText: "je souhaite commander le Shampooing Argan (9,90€)"
+      },
+      {
+        name: "Lait Corps",
+        price: "11,90 €", category: "Soin Corps",
+        tagline: "Texture fondante pour une peau veloutée de la tête aux pieds",
+        img: "images/lait-corps.jpg",
+        badge: null,
+        description: "Notre Lait Corps est un soin hydratant à texture fondante qui enveloppe la peau dans un voile doux et parfumé. Sa formule riche en beurre de karité et huiles végétales pénètre rapidement pour laisser la peau veloutée, délicieusement nourrie et protégée tout au long de la journée.",
+        composition: "Eau, beurre de karité, huile d'amande douce, aloe vera bio, glycérine végétale, vitamine E, parfum naturel.",
+        benefits: ["Hydratation longue durée jusqu'à 24h sans application répétée","Texture légère, fondante et non collante sur la peau","Peau veloutée et soyeuse instantanément après application","Parfum délicat et enveloppant, naturellement doux"],
+        usage: "Appliquer après la douche sur peau légèrement humide. Masser jusqu'à complète absorption en insistant sur les zones sèches. Utiliser quotidiennement pour une peau constamment hydratée.",
+        waText: "je souhaite commander le Lait Corps (11,90€)"
+      },
+      {
+        name: "Eau de Rose",
+        price: "6,00 €", category: "Tonique Floral",
+        tagline: "Kelaa M'gouna – tonique floral apaisant 100% naturel, 200ml",
+        img: "images/eau-de-rose.jpg", badge: null,
+        description: "L'Eau de Rose Kelaa M'gouna est une eau florale 100% naturelle et pure, distillée à partir des roses de la Vallée du Dadès au Maroc. Véritable trésor botanique utilisé depuis des siècles, elle est reconnue pour ses propriétés toniques, apaisantes et anti-âge remarquables.",
+        composition: "Eau de rose distillée 100% pure, origine Vallée de M'gouna (Dadès), Maroc. Sans alcool, sans conservateurs ajoutés, sans colorants.",
+        benefits: ["Tonifie et resserre les pores visiblement après quelques jours","Apaise les rougeurs, irritations et peaux réactives","Propriétés anti-âge et antioxydantes naturelles","Parfaite comme brumisation hydratante à toute heure","Prépare idéalement la peau à absorber les soins suivants"],
+        usage: "Matin et soir après nettoyage, vaporiser sur le visage ou appliquer avec un coton doux. Peut s'utiliser comme brumisation tout au long de la journée pour une fraîcheur instantanée.",
+        waText: "je souhaite commander l'Eau de Rose (6,00€)"
+      },
+      {
+        name: "Huile de Rose",
+        price: "8,90 €", category: "Huile Précieuse",
+        tagline: "Sérum botanique à la rose – éclat, anti-âge, 30ml",
+        img: "images/huile-de-rose.jpg", badge: null,
+        description: "L'Huile de Rose est un sérum botanique d'exception extrait des pétales de rosa damascena. Véritable élixir de jeunesse, cette huile précieuse régénère, éclaire et protège la peau des agressions extérieures. Son efficacité anti-âge en fait un incontournable des routines beauté naturelles.",
+        composition: "Huile de Rose (Rosa Damascena Flower Oil), vitamine E naturelle, huile de jojoba, extrait de rosier sauvage. 30 ml.",
+        benefits: ["Action anti-âge intense et régénératrice dès 2 semaines","Éclat et luminosité retrouvés naturellement","Répare les peaux abîmées, sèches ou déshydratées","Parfum naturel de rose absolue, une note florale pure","Convient aux peaux sèches, mixtes et matures"],
+        usage: "Le soir, appliquer 2 à 4 gouttes sur visage et cou propres. Masser délicatement en mouvements ascendants et circulaires. Peut s'utiliser en mélange avec votre crème habituelle pour enrichir son pouvoir nutritif.",
+        waText: "je souhaite commander l'Huile de Rose (8,90€)"
+      },
+      {
+        name: "Baume Réparateur",
+        price: "3,50 €", category: "Soin Ciblé",
+        tagline: "Soin ciblé intensif pour réparer et protéger les zones sensibles",
+        img: "images/baume-reparateur.png",
+        badge: null,
+        description: "Le Baume Réparateur est un soin concentré et protecteur formulé pour les zones sèches et fragilisées. Sa texture riche et fondante forme un voile protecteur nourrissant qui aide la peau à se régénérer rapidement, tout en la protégeant des agressions extérieures.",
+        composition: "Cire d'abeille naturelle, huile d'argan, beurre de karité, huile de calendula, vitamine E naturelle.",
+        benefits: ["Répare intensément les zones très sèches et abîmées","Protège et imperméabilise les peaux fragilisées","Action cicatrisante naturelle douce","Texture fondante confortable, non collante"],
+        usage: "Appliquer en petite quantité sur les zones ciblées : lèvres, coudes, talons, cuticules, zones de frottement. Utiliser autant que nécessaire, idéalement en soin de nuit sur les zones très sèches.",
+        waText: "je souhaite commander le Baume (3,50€)"
+      }
+    ];
+
+    const productsGrid = document.getElementById('productsGrid');
+    products.forEach((p, i) => {
+      const delay = (i % 3) + 1;
+      const badgeHTML = p.badge ? `<div class="product-badge">${p.badge}</div>` : '';
+      let visualHTML;
+      if (p.img) {
+        visualHTML = `
+          <div class="product-visual">
+            ${badgeHTML}
+            <img src="${p.img}" alt="${p.name}" loading="lazy" width="400" height="300" />
+          </div>`;
+      } else {
+        visualHTML = `
+          <div class="product-visual-placeholder" style="background:${p.placeholder.bg};">
+            ${badgeHTML}
+            <span class="placeholder-icon">${p.placeholder.icon}</span>
+          </div>`;
+      }
+      productsGrid.innerHTML += `
+        <article class="product-card reveal reveal-delay-${delay}" tabindex="0" style="cursor:pointer" aria-label="${p.name}, ${p.price}" onclick="openDetail(products[${i}])"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetail(products[${i}]);}">
+          ${visualHTML}
+          <div class="product-info">
+            <h3 class="product-name">${p.name}</h3>
+            <p class="product-tagline">${p.tagline}</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">${p.price}</div>
+                <div class="product-price-unit">unité</div>
+              </div>
+              <a class="btn-whatsapp" href="${waLink(p.waText)}" target="_blank" rel="noopener noreferrer" aria-label="Commander ${p.name} sur WhatsApp">
+                ${WA_SVG} Commander
+              </a>
+            </div>
+          </div>
+        </article>`;
+    });
+
+    /* ======== COLLECTIONS ======== */
+    // Pricing rule: sum of unit prices → nearest X.99€
+    // Coffret Argan = Crème Argan (6,90) + Huile d'Argan (12,00) = 18,90 → 18,99€
+    // Lot Rose = Crème Rose (6,90) + Huile de Rose (8,90) = 15,80 → 15,99€
+    // Gamme Argan = Savon (4,50) + Crème (6,90) + Huile (12,00) + Gommage (7,90) = 31,30 → 31,99€
+    const collections = [
+      {
+        name: "Coffret Argan",
+        subtitle: "Le Rituel de Beauté de la Vallée du Souss",
+        category: "Coffret Cadeau",
+        img: "images/collection-coffret-argan.jpg",
+        composition: "Crème à l'Argan + Huile d'Argan",
+        compositionDetail: "Crème à l'Argan Deltx (Argania Spinosa, acide hyaluronique végétal, beurre de karité, vitamine E) · Huile d'Argan Bio 100% pure pressée à froid (Argania Spinosa Kernel Oil), certifiée Bio, origine forêts du Souss, Maroc. Sans additifs.",
+        priceWas: "18,90 €",
+        price: "18,99 €",
+        badge: "Coffret",
+        description: "Le Coffret Argan réunit les deux soins phares à l'huile d'argan pour un rituel de beauté complet. Ce duo associe les bienfaits hydratants de la Crème à l'Argan et les propriétés régénérantes de l'Huile d'Argan Bio, pour une peau nourrie et sublimée de la tête aux pieds. Idéal comme cadeau ou pour initier une routine argan authentique.",
+        benefits: [
+          "Hydratation intense et nutrition profonde en duo synergique",
+          "Peau visiblement plus lisse, ferme et éclatante",
+          "Rituel complet visage + corps en deux gestes simples",
+          "Formules 100% naturelles, sans parabènes ni agents agressifs",
+          "Économie sur l'achat séparé des deux produits"
+        ],
+        usage: "Matin : appliquer la Crème à l'Argan sur visage et cou propres en massant doucement jusqu'à absorption. Soir : déposer 2 à 3 gouttes d'Huile d'Argan sur peau propre en soin de nuit régénérant. L'huile peut également être utilisée en soin capillaire sur les pointes.",
+        waText: "je souhaite commander le Coffret Argan (18,99€)"
+      },
+      {
+        name: "Lot Soins à la Rose",
+        subtitle: "L'Écrin Floral de la Vallée des Roses",
+        category: "Duo Beauté",
+        img: "images/collection-gamme-rose.jpg",
+        composition: "Crème de Rose + Huile de Rose",
+        compositionDetail: "Crème de Rose Deltx (eau de rose distillée, Rosa Damascena, huile de rose, vitamine C, acide hyaluronique, beurre de karité) · Huile de Rose (Rosa Damascena Flower Oil, vitamine E naturelle, huile de jojoba, extrait de rosier sauvage – 30 ml).",
+        priceWas: "15,80 €",
+        price: "15,99 €",
+        badge: "Duo Rose",
+        description: "Le Lot Soins à la Rose est un duo floral précieux qui capture toute l'essence de la rose de Damas. La Crème légère assure le soin quotidien tandis que l'Huile élixir prend soin de la peau en profondeur la nuit. Ensemble, ils offrent un rituel anti-âge complet qui unifie le teint, illumine et protège la peau.",
+        benefits: [
+          "Synergie anti-âge complète jour et nuit",
+          "Teint unifié, lumineux et naturellement rosé",
+          "Propriétés antioxydantes et régénérantes de la rose de Damas",
+          "Parfum floral naturel envoûtant, persistant sur la peau",
+          "Duo économique pour une routine beauté florale complète"
+        ],
+        usage: "Matin : appliquer la Crème de Rose sur visage et cou nets en mouvements ascendants délicats. Soir : déposer 2 à 4 gouttes d'Huile de Rose sur peau propre et masser doucement. Peut être mélangée à la crème pour amplifier les bienfaits nourrissants.",
+        waText: "je souhaite commander le Lot Soins à la Rose (15,99€)"
+      },
+      {
+        name: "Gamme Argan Complète",
+        subtitle: "Le Rituel Intégral de l'Or du Souss",
+        category: "Collection Premium",
+        img: "images/collection-gamme-argan.jpg",
+        composition: "Savon + Crème + Huile d'Argan + Gommage Argan",
+        compositionDetail: "Savon à l'Argan Assif (huile d'argan, huile d'olive extra vierge, glycérine naturelle) · Gommage à l'Argan (sel de mer naturel, huile d'argan vierge, beurre de karité) · Crème à l'Argan Deltx (acide hyaluronique, vitamine E, aloe vera) · Huile d'Argan Bio 100% pure pressée à froid (Argania Spinosa, certifiée Bio).",
+        priceWas: "31,30 €",
+        price: "31,99 €",
+        badge: "Collection",
+        description: "La Gamme Argan Complète est le rituel ultime pour les amoureux de l'huile d'argan. Réunissant les quatre étapes essentielles du soin — purifier, exfolier, hydrater, nourrir — cette collection offre un parcours beauté intégral, de la tête aux pieds, sublimé par l'or liquide du Maroc.",
+        benefits: [
+          "Rituel complet en 4 étapes : purification, exfoliation, hydratation, nutrition",
+          "Peau transformée, satinée et lumineuse dès la première semaine",
+          "Économie significative sur l'achat séparé des 4 produits",
+          "100% naturel, sans agents chimiques agressifs ni parabènes",
+          "Idéal en coffret cadeau ou pour débuter une routine argan complète"
+        ],
+        usage: "Étape 1 – Purifier : utiliser quotidiennement le Savon Argan. Étape 2 – Exfolier : appliquer le Gommage Argan 2 à 3 fois par semaine sur peau humide. Étape 3 – Hydrater : appliquer la Crème Argan matin et/ou soir. Étape 4 – Nourrir : quelques gouttes d'Huile d'Argan le soir sur visage ou en soin capillaire sur les pointes.",
+        waText: "je souhaite commander la Gamme Argan Complète (31,99€)"
+      }
+    ];
+
+    const collectionsGrid = document.getElementById('collectionsGrid');
+    collections.forEach((c, i) => {
+      const delay = i + 1;
+      collectionsGrid.innerHTML += `
+        <article class="collection-card reveal reveal-delay-${delay}" tabindex="0" style="cursor:pointer" aria-label="${c.name}, ${c.price}" onclick="openDetail(collections[${i}])"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetail(collections[${i}]);}">
+          <div class="collection-visual">
+            <div class="collection-badge-top">${c.badge}</div>
+            <img src="${c.img}" alt="${c.name}" loading="lazy" width="480" height="640" />
+          </div>
+          <div class="collection-info">
+            <h3 class="collection-name">${c.name}</h3>
+            <p class="collection-composition"><strong>Comprend :</strong> ${c.composition}</p>
+            <div class="collection-footer">
+              <div class="collection-pricing">
+                <div class="collection-price-was">${c.priceWas} (prix individuel)</div>
+                <div class="collection-price">${c.price}</div>
+              </div>
+              <a class="btn-whatsapp" href="${waLink(c.waText)}" target="_blank" rel="noopener noreferrer" aria-label="Commander ${c.name} sur WhatsApp">
+                ${WA_SVG} Commander
+              </a>
+            </div>
+          </div>
+        </article>`;
+    });
+
+    /* ======== MARQUEE ======== */
+    const marqueeMsg = '✦ Offre Spéciale : -10% de remise immédiate à partir de 2 produits achetés ! ✦ Livraison directe chez vous ✦ Soins 100% naturels & précieux';
+    const marqueeInner = document.getElementById('marqueeInner');
+    for (let i = 0; i < 4; i++) {
+      const item = document.createElement('span');
+      item.className = 'marquee-item';
+      if (i > 0) item.setAttribute('aria-hidden', 'true');
+      item.textContent = marqueeMsg;
+      marqueeInner.appendChild(item);
+    }
+
+    /* ======== HERO TITLE ANIMATION ======== */
+    const heroTitle = document.getElementById('heroTitle');
+    let letterDelay = 0.6;
+    "Les jardins d'erin".split('').forEach(char => {
+      if (char === ' ') {
+        const gap = document.createElement('span');
+        gap.className = 'word-gap'; gap.setAttribute('aria-hidden','true');
+        heroTitle.appendChild(gap);
+      } else {
+        const span = document.createElement('span');
+        span.className = 'letter'; span.setAttribute('aria-hidden','true');
+        span.textContent = char; span.style.animationDelay = letterDelay + 's';
+        heroTitle.appendChild(span);
+        letterDelay += 0.055;
+      }
+    });
+
+    /* ======== SCROLL REVEAL ======== */
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ======== NAVBAR ======== */
+    const navbar = document.getElementById('navbar');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { navbar.classList.toggle('scrolled', window.scrollY > 60); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    function adjustNavbar() {
+      const bh = document.querySelector('.marquee-banner').offsetHeight;
+      navbar.style.top = bh + 'px';
+    }
+    adjustNavbar();
+    window.addEventListener('resize', adjustNavbar, { passive: true });
+
+    /* ======== MOBILE NAV ======== */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+    function openNav()  { mobileNav.classList.add('open'); mobileMenuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; mobileNavClose.focus(); }
+    function closeNav() { mobileNav.classList.remove('open'); mobileMenuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; mobileMenuBtn.focus(); }
+
+    mobileMenuBtn.addEventListener('click', openNav);
+    mobileNavClose.addEventListener('click', closeNav);
+    mobileNavBackdrop.addEventListener('click', closeNav);
+    document.addEventListener('keydown', e => { if (e.key==='Escape' && mobileNav.classList.contains('open')) closeNav(); });
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeNav));
+
+    /* ======== SMOOTH SCROLL ======== */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = navbar.offsetHeight + document.querySelector('.marquee-banner').offsetHeight + 8;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ======== DETAIL PAGE ======== */
+    const detailPage     = document.getElementById('detailPage');
+    const detailBackBtn  = document.getElementById('detailBack');
+    const detailHeaderWa = document.getElementById('detailHeaderWa');
+    const detailGallery  = document.getElementById('detailGallery');
+    const detailImg      = document.getElementById('detailImg');
+
+    function openDetail(item) {
+      // Gallery
+      const existingIcon = detailGallery.querySelector('.detail-placeholder-icon');
+      if (existingIcon) existingIcon.remove();
+
+      if (item.img) {
+        detailImg.src   = item.img;
+        detailImg.alt   = item.name;
+        detailImg.style.display = '';
+        detailGallery.style.background = '';
+      } else {
+        detailImg.src   = '';
+        detailImg.alt   = '';
+        detailImg.style.display = 'none';
+        detailGallery.style.cssText += `background:${item.placeholder.bg};display:flex;align-items:center;justify-content:center;`;
+        const iconEl = document.createElement('span');
+        iconEl.className = 'detail-placeholder-icon';
+        iconEl.setAttribute('aria-hidden', 'true');
+        iconEl.style.cssText = 'font-size:96px;opacity:0.45;';
+        iconEl.textContent = item.placeholder.icon;
+        detailGallery.appendChild(iconEl);
+      }
+
+      // Category tag
+      document.getElementById('detailCategoryTag').textContent = item.category || '';
+
+      // Name + breadcrumb
+      document.getElementById('detailName').textContent = item.name;
+      document.getElementById('detailBreadcrumbName').textContent = item.name;
+
+      // Price
+      document.getElementById('detailPriceMain').textContent = item.price;
+      const priceWasEl = document.getElementById('detailPriceWas');
+      if (item.priceWas) {
+        priceWasEl.textContent = item.priceWas + ' (prix individuel)';
+        priceWasEl.hidden = false;
+      } else {
+        priceWasEl.hidden = true;
+      }
+
+      // Unit label
+      document.getElementById('detailPriceUnit').textContent = item.compositionDetail ? 'par coffret' : 'par unité';
+
+      // Description
+      document.getElementById('detailDesc').textContent = item.description || '';
+
+      // Composition
+      document.getElementById('detailComposition').textContent = item.compositionDetail || item.composition || '';
+
+      // Benefits
+      const benefitsList = document.getElementById('detailBenefits');
+      benefitsList.innerHTML = '';
+      (item.benefits || []).forEach(b => {
+        const li = document.createElement('li');
+        li.textContent = b;
+        benefitsList.appendChild(li);
+      });
+
+      // Usage
+      document.getElementById('detailUsage').textContent = item.usage || '';
+
+      // WhatsApp links
+      const waUrl = waLink(item.waText);
+      document.getElementById('detailWaBtn').href    = waUrl;
+      detailHeaderWa.href = waUrl;
+
+      // Open
+      detailPage.classList.add('open');
+      detailPage.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      detailPage.scrollTop = 0;
+      detailBackBtn.focus();
+
+      history.pushState({ detail: true }, '', '#detail');
+    }
+
+    function closeDetail() {
+      detailPage.classList.remove('open');
+      detailPage.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (location.hash === '#detail') history.back();
+    }
+
+    detailBackBtn.addEventListener('click', closeDetail);
+
+    const breadcrumbBack = document.getElementById('detailBreadcrumbBack');
+    breadcrumbBack.addEventListener('click', closeDetail);
+    breadcrumbBack.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeDetail(); }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && detailPage.classList.contains('open')) closeDetail();
+    });
+
+    window.addEventListener('popstate', () => {
+      if (detailPage.classList.contains('open')) {
+        detailPage.classList.remove('open');
+        detailPage.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
