@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Les jardins d'erin – Cosmétique naturelle et précieuse, huile d'argan, eau de rose, crèmes, savons et soins bio." />
-  <title>Les jardins d'erin – Cosmétique Naturelle & Précieuse</title>
+  <meta name="description" content="Les jardins d'Erin – Cosmétique naturelle et précieuse, huile d'argan, eau de rose, crèmes, savons et soins bio." />
+  <title>Les jardins d'Erin – Cosmétique Naturelle & Précieuse</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -445,6 +445,88 @@
     .mobile-nav-link { font-family: var(--font-serif); font-size: 22px; color: var(--text-dark); padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: color 0.25s; }
     .mobile-nav-link:hover { color: var(--olive); }
 
+    /* ===================== PRODUCT SIZE CHIP ===================== */
+    .product-size {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--olive); background: rgba(107,124,85,0.10);
+      padding: 3px 10px; border-radius: 50px; margin-bottom: 14px;
+    }
+    .product-size::before { content: ''; display: inline-block; width: 5px; height: 5px; background: var(--olive); border-radius: 50%; opacity: 0.65; }
+
+    /* ===================== COLLECTION SAVINGS ===================== */
+    .collection-savings {
+      font-size: 11px; font-weight: 700; color: #16a34a; margin-top: 4px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .collection-savings::before { content: '↓'; font-size: 10px; }
+
+    /* ===================== CUSTOM BUNDLE ===================== */
+    .custom-bundle {
+      margin-top: 52px;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--rose-soft) 100%);
+      border: 1.5px dashed var(--rose-deep); border-radius: var(--radius-lg);
+      padding: 36px 52px; display: flex; align-items: center; gap: 36px;
+      transition: border-color 0.35s, box-shadow 0.35s; position: relative; overflow: hidden;
+    }
+    .custom-bundle::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .custom-bundle:hover { border-color: var(--gold); box-shadow: 0 8px 40px rgba(201,169,110,0.20); }
+    .custom-bundle-icon { font-size: 56px; flex-shrink: 0; }
+    .custom-bundle-text { flex: 1; }
+    .custom-bundle-text h3 { font-family: var(--font-serif); font-size: clamp(20px,2.5vw,26px); font-weight: 500; color: var(--text-dark); margin-bottom: 8px; line-height: 1.2; }
+    .custom-bundle-text h3 em { font-style: italic; color: var(--olive); }
+    .custom-bundle-text p { font-size: 14px; color: var(--text-mid); line-height: 1.7; max-width: 500px; }
+    .btn-bundle {
+      display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
+      background: var(--white); color: var(--olive-dark);
+      font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+      padding: 14px 30px; border-radius: 50px; border: 1.5px solid var(--olive);
+      cursor: pointer; transition: all 0.25s; white-space: nowrap; text-decoration: none;
+    }
+    .btn-bundle:hover { background: var(--olive-dark); color: var(--white); border-color: var(--olive-dark); box-shadow: 0 8px 24px rgba(74,87,64,0.28); transform: translateY(-2px); }
+    @media (max-width: 900px) { .custom-bundle { flex-direction: column; text-align: center; padding: 36px 32px; } .custom-bundle-text p { max-width: 100%; } }
+
+    /* ===================== INGREDIENTS SECTION ===================== */
+    .ingredients { background: var(--white); }
+    .ingredients-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    .ingredient-card {
+      display: grid; grid-template-columns: 220px 1fr;
+      background: var(--cream); border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow-card);
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
+    }
+    .ingredient-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(45,40,32,0.12); }
+    .ingredient-visual {
+      position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column;
+      gap: 10px; padding: 32px 20px; min-height: 280px;
+    }
+    .ingredient-visual-argan  { background: linear-gradient(160deg, #d4c890 0%, #c09a60 50%, #8a6830 100%); }
+    .ingredient-visual-rose   { background: linear-gradient(160deg, #f5e0dc 0%, #e09898 50%, #c06868 100%); }
+    .ingredient-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.18) 0%, transparent 65%); pointer-events: none; }
+    .ing-icon  { font-size: 60px; position: relative; z-index: 1; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)); }
+    .ing-name  { font-family: var(--font-serif); font-style: italic; font-size: 12px; color: rgba(255,255,255,0.88); text-align: center; position: relative; z-index: 1; letter-spacing: 0.5px; }
+    .ing-origin { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.65); text-align: center; position: relative; z-index: 1; }
+    .ingredient-info { padding: 32px 28px 32px 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+    .ingredient-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--olive);
+    }
+    .ingredient-tag-rose { color: var(--rose-deep); }
+    .ingredient-tag::before { content: ''; width: 22px; height: 1px; background: currentColor; opacity: 0.6; }
+    .ingredient-title { font-family: var(--font-serif); font-size: clamp(20px,2.2vw,26px); font-weight: 500; color: var(--text-dark); line-height: 1.2; }
+    .ingredient-title em { font-style: italic; color: var(--olive); }
+    .ingredient-title-rose em { color: var(--rose-deep); }
+    .ingredient-text { font-size: 13.5px; color: var(--text-mid); line-height: 1.85; }
+    .ingredient-text strong { color: var(--text-dark); font-weight: 600; }
+    @media (max-width: 1100px) { .ingredients-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) {
+      .ingredient-card { grid-template-columns: 1fr; }
+      .ingredient-visual { min-height: 180px; flex-direction: row; gap: 20px; padding: 24px; }
+      .ing-icon { font-size: 48px; }
+      .ingredient-info { padding: 24px 24px 28px; }
+    }
+
     /* ===================== DETAIL PAGE ===================== */
     .detail-page {
       position: fixed; inset: 0; z-index: 5000;
@@ -594,13 +676,14 @@
   <!-- ======================== NAVBAR ======================== -->
   <nav class="navbar" id="navbar" aria-label="Navigation principale">
     <div class="container">
-      <a class="nav-logo" href="#" aria-label="Les jardins d'erin">Les jardins <span>d'erin</span></a>
+      <a class="nav-logo" href="#" aria-label="Les jardins d'Erin">Les jardins <span>d'Erin</span></a>
       <ul class="nav-links" role="list">
         <li><a href="#produits">Catalogue</a></li>
         <li><a href="#collections">Collections</a></li>
+        <li><a href="#ingredients">Ingrédients</a></li>
         <li><a href="#processus">Commander</a></li>
         <li><a href="#avis">Avis</a></li>
-        <li><a class="nav-cta" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer">Commander</a></li>
+        <li><a class="nav-cta" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27Erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer">Commander</a></li>
       </ul>
       <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -615,9 +698,10 @@
       <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fermer le menu">✕</button>
       <a class="mobile-nav-link" href="#produits">Catalogue</a>
       <a class="mobile-nav-link" href="#collections">Collections</a>
+      <a class="mobile-nav-link" href="#ingredients">Ingrédients</a>
       <a class="mobile-nav-link" href="#processus">Commander</a>
       <a class="mobile-nav-link" href="#avis">Avis Clients</a>
-      <a class="mobile-nav-link" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander" target="_blank" rel="noopener noreferrer" style="color:var(--olive);font-weight:600;">WhatsApp</a>
+      <a class="mobile-nav-link" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27Erin%2C%20je%20souhaite%20commander" target="_blank" rel="noopener noreferrer" style="color:var(--olive);font-weight:600;">WhatsApp</a>
     </div>
   </div>
 
@@ -640,14 +724,14 @@
 
     <div class="hero-content">
       <p class="hero-eyebrow">Cosmétique Naturelle & Précieuse</p>
-      <h1 class="hero-title" id="heroTitle" aria-label="Les jardins d'erin"></h1>
+      <h1 class="hero-title" id="heroTitle" aria-label="Les jardins d'Erin"></h1>
       <p class="hero-subtitle"><em>La cosmétique naturelle et précieuse,</em><br>directement chez vous.</p>
       <div class="hero-cta-group">
         <a class="btn-primary" href="#produits" role="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Découvrir la collection
         </a>
-        <a class="btn-secondary" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin" target="_blank" rel="noopener noreferrer">
+        <a class="btn-secondary" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27Erin" target="_blank" rel="noopener noreferrer">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
           Nous contacter
         </a>
@@ -722,6 +806,75 @@
         <p class="section-desc">Des ensembles soigneusement sélectionnés pour une routine beauté complète. Idéaux aussi en cadeau.</p>
       </div>
       <div class="collections-grid" id="collectionsGrid"></div>
+
+      <!-- Coffret sur mesure -->
+      <div class="custom-bundle reveal">
+        <div class="custom-bundle-icon" aria-hidden="true">🎁</div>
+        <div class="custom-bundle-text">
+          <h3>Composez votre <em>coffret sur mesure</em></h3>
+          <p>Envie d'un cadeau unique ou d'une routine entièrement personnalisée ? Choisissez librement les produits de votre choix et nous vous préparerons un coffret à votre image — idéal pour vous faire plaisir ou offrir un moment de beauté naturelle.</p>
+        </div>
+        <a class="btn-bundle" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27Erin%2C%20je%20souhaite%20composer%20mon%20propre%20coffret%20sur%20mesure%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" aria-label="Composer mon coffret sur WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Créer mon coffret
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== INGRÉDIENTS PHARES ======================== -->
+  <section class="ingredients" id="ingredients" aria-label="Nos ingrédients phares">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">À la Source</span>
+        <h2 class="section-title">Nos <em>Ingrédients Phares</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="section-desc">Derrière chaque soin, une histoire. Celle de deux trésors botaniques d'exception, récoltés avec soin au cœur du Maroc.</p>
+      </div>
+      <div class="ingredients-grid">
+
+        <!-- Argan -->
+        <article class="ingredient-card reveal reveal-delay-1">
+          <div class="ingredient-visual ingredient-visual-argan" aria-hidden="true">
+            <div class="ingredient-visual::before"></div>
+            <span class="ing-icon">🌿</span>
+            <span class="ing-name">Argania spinosa</span>
+            <span class="ing-origin">Souss · Maroc</span>
+          </div>
+          <div class="ingredient-info">
+            <span class="ingredient-tag">Ingrédient phare</span>
+            <h3 class="ingredient-title">L'<em>Arganier</em>,<br>l'or liquide du Maroc</h3>
+            <p class="ingredient-text">
+              <strong>L'Arganier (Argania spinosa)</strong> est un arbre providentiel et millénaire, classé au patrimoine de l'UNESCO, qui ne pousse à l'état sauvage qu'au Maroc. Cet «&nbsp;arbre de vie&nbsp;» est un rempart naturel exceptionnel contre l'avancée du désert.
+              <br><br>
+              Chaque été, l'arbre offre de petits fruits ovoïdes, les précieux amandons, qui donnent la célèbre <strong>huile d'argan</strong>. Surnommée «&nbsp;l'or liquide du Maroc&nbsp;», cette huile est le fruit d'un savoir-faire ancestral entièrement préservé par les coopératives de femmes berbères.
+              <br><br>
+              Qu'elle soit cosmétique (pour nourrir la peau et les cheveux) ou alimentaire (avec son goût unique de noisette torréfiée), l'argan incarne à la fois un trésor de santé et le symbole d'une économie solidaire et durable.
+            </p>
+          </div>
+        </article>
+
+        <!-- Rose de Damas -->
+        <article class="ingredient-card reveal reveal-delay-2">
+          <div class="ingredient-visual ingredient-visual-rose" aria-hidden="true">
+            <span class="ing-icon">🌹</span>
+            <span class="ing-name">Rosa damascena</span>
+            <span class="ing-origin">Vallée des Roses · Maroc</span>
+          </div>
+          <div class="ingredient-info">
+            <span class="ingredient-tag ingredient-tag-rose">Ingrédient phare</span>
+            <h3 class="ingredient-title ingredient-title-rose">La <em>Rose de Damas</em>,<br>reine des parfumeurs</h3>
+            <p class="ingredient-text">
+              Reine incontestée des parfumeurs, la <strong>Rose de Damas (Rosa damascena)</strong> est une fleur mythique célèbre pour son parfum envoûtant, à la fois riche, frais et subtilement épicé.
+              <br><br>
+              Chaque printemps, notamment dans la célèbre <strong>Vallée des Roses au Maroc</strong> (Kelaat M'gouna), ses pétales délicats sont cueillis à la main, dès l'aube, avant que le soleil ne fasse évaporer leur précieuse essence. Il faut près de <strong>quatre tonnes de pétales</strong> pour obtenir un seul kilo de son huile essentielle d'exception.
+              <br><br>
+              Véritable trésor cosmétique, son eau de rose et ses extraits sont mondialement recherchés pour leurs vertus apaisantes, régénérantes et anti-âge. Une merveille de la nature qui allie délicatesse et puissance olfactive.
+            </p>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -807,7 +960,7 @@
       <span class="section-label">Commander</span>
       <h2>Prête à prendre soin de vous ?</h2>
       <p>Écrivez-nous directement sur WhatsApp et recevez vos soins naturels chez vous en toute simplicité.</p>
-      <a class="btn-wa-big" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" aria-label="Commander sur WhatsApp">
+      <a class="btn-wa-big" href="https://wa.me/33672623296?text=Bonjour%20Les%20jardins%20d%27Erin%2C%20je%20souhaite%20commander%20%F0%9F%8C%BF" target="_blank" rel="noopener noreferrer" aria-label="Commander sur WhatsApp">
         <svg class="wa-big-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Commander sur WhatsApp
       </a>
@@ -819,7 +972,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <h3>Les jardins <span>d'erin</span></h3>
+          <h3>Les jardins <span>d'Erin</span></h3>
           <p>Cosmétique naturelle et précieuse, sublimée par les trésors botaniques. Chaque soin est une invitation à prendre soin de vous.</p>
         </div>
         <div class="footer-col">
@@ -828,6 +981,7 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#produits">Catalogue</a></li>
             <li><a href="#collections">Collections</a></li>
+            <li><a href="#ingredients">Ingrédients</a></li>
             <li><a href="#processus">Commander</a></li>
             <li><a href="#avis">Avis Clients</a></li>
           </ul>
@@ -840,7 +994,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Les jardins d'erin – Tous droits réservés</p>
+        <p>© 2025 Les jardins d'Erin – Tous droits réservés</p>
         <p class="footer-made">Fait avec <span>♥</span> pour votre beauté naturelle</p>
       </div>
     </div>
@@ -854,7 +1008,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
         Retour
       </button>
-      <span class="detail-header-logo" aria-hidden="true">Les jardins <span>d'erin</span></span>
+      <span class="detail-header-logo" aria-hidden="true">Les jardins <span>d'Erin</span></span>
       <a id="detailHeaderWa" class="btn-primary" href="#" target="_blank" rel="noopener noreferrer" style="font-size:13px;padding:10px 22px;" aria-label="Commander ce produit sur WhatsApp">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Commander
@@ -917,7 +1071,7 @@
     const WA_SVG = `<svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>`;
 
     function waLink(text) {
-      return `https://wa.me/33672623296?text=${encodeURIComponent("Bonjour Les jardins d'erin, " + text + " 🌿")}`;
+      return `https://wa.me/33672623296?text=${encodeURIComponent("Bonjour Les jardins d'Erin, " + text + " 🌿")}`;
     }
 
     /* ======== PRODUCTS ======== */
@@ -1047,6 +1201,30 @@
       }
     ];
 
+    /* ---- Contenances des produits ---- */
+    const productSizes = {
+      "Gommage à l'Argan": "Format 200g",
+      "Gommage à la Rose":  "Format 200g",
+      "Crème à l'Argan":    "Format 100ml",
+      "Crème de Rose":      "Format 100ml",
+      "Savon à l'Argan":    "Format 100g",
+      "Huile d'Argan":      "Format 100ml",
+      "Shampooing Argan":   "Format 500ml",
+      "Lait Corps":         "Format 200ml",
+      "Eau de Rose":        "Format 200ml",
+      "Huile de Rose":      "Format 30ml",
+      "Baume Réparateur":   "Format 20g"
+    };
+    products.forEach(p => { p.size = productSizes[p.name] || ''; });
+
+    /* ---- Huile d'Argan en 1ère position (Best-seller) ---- */
+    const huileIdx = products.findIndex(p => p.name === "Huile d'Argan");
+    if (huileIdx > 0) {
+      const [huile] = products.splice(huileIdx, 1);
+      huile.badge = "⭐ Best-seller";
+      products.unshift(huile);
+    }
+
     const productsGrid = document.getElementById('productsGrid');
     products.forEach((p, i) => {
       const delay = (i % 3) + 1;
@@ -1072,6 +1250,7 @@
           <div class="product-info">
             <h3 class="product-name">${p.name}</h3>
             <p class="product-tagline">${p.tagline}</p>
+            ${p.size ? `<span class="product-size">${p.size}</span>` : ''}
             <div class="product-footer">
               <div>
                 <div class="product-price">${p.price}</div>
@@ -1099,7 +1278,8 @@
         composition: "Crème à l'Argan + Huile d'Argan",
         compositionDetail: "Crème à l'Argan Deltx (Argania Spinosa, acide hyaluronique végétal, beurre de karité, vitamine E) · Huile d'Argan Bio 100% pure pressée à froid (Argania Spinosa Kernel Oil), certifiée Bio, origine forêts du Souss, Maroc. Sans additifs.",
         priceWas: "18,90 €",
-        price: "18,99 €",
+        price: "17,00 €",
+        savings: "Économie : 1,90 €",
         badge: "Coffret",
         description: "Le Coffret Argan réunit les deux soins phares à l'huile d'argan pour un rituel de beauté complet. Ce duo associe les bienfaits hydratants de la Crème à l'Argan et les propriétés régénérantes de l'Huile d'Argan Bio, pour une peau nourrie et sublimée de la tête aux pieds. Idéal comme cadeau ou pour initier une routine argan authentique.",
         benefits: [
@@ -1110,7 +1290,7 @@
           "Économie sur l'achat séparé des deux produits"
         ],
         usage: "Matin : appliquer la Crème à l'Argan sur visage et cou propres en massant doucement jusqu'à absorption. Soir : déposer 2 à 3 gouttes d'Huile d'Argan sur peau propre en soin de nuit régénérant. L'huile peut également être utilisée en soin capillaire sur les pointes.",
-        waText: "je souhaite commander le Coffret Argan (18,99€)"
+        waText: "je souhaite commander le Coffret Argan (17,00€)"
       },
       {
         name: "Lot Soins à la Rose",
@@ -1120,7 +1300,8 @@
         composition: "Crème de Rose + Huile de Rose",
         compositionDetail: "Crème de Rose Deltx (eau de rose distillée, Rosa Damascena, huile de rose, vitamine C, acide hyaluronique, beurre de karité) · Huile de Rose (Rosa Damascena Flower Oil, vitamine E naturelle, huile de jojoba, extrait de rosier sauvage – 30 ml).",
         priceWas: "15,80 €",
-        price: "15,99 €",
+        price: "14,00 €",
+        savings: "Économie : 1,80 €",
         badge: "Duo Rose",
         description: "Le Lot Soins à la Rose est un duo floral précieux qui capture toute l'essence de la rose de Damas. La Crème légère assure le soin quotidien tandis que l'Huile élixir prend soin de la peau en profondeur la nuit. Ensemble, ils offrent un rituel anti-âge complet qui unifie le teint, illumine et protège la peau.",
         benefits: [
@@ -1131,7 +1312,7 @@
           "Duo économique pour une routine beauté florale complète"
         ],
         usage: "Matin : appliquer la Crème de Rose sur visage et cou nets en mouvements ascendants délicats. Soir : déposer 2 à 4 gouttes d'Huile de Rose sur peau propre et masser doucement. Peut être mélangée à la crème pour amplifier les bienfaits nourrissants.",
-        waText: "je souhaite commander le Lot Soins à la Rose (15,99€)"
+        waText: "je souhaite commander le Lot Soins à la Rose (14,00€)"
       },
       {
         name: "Gamme Argan Complète",
@@ -1141,7 +1322,8 @@
         composition: "Savon + Crème + Huile d'Argan + Gommage Argan",
         compositionDetail: "Savon à l'Argan Assif (huile d'argan, huile d'olive extra vierge, glycérine naturelle) · Gommage à l'Argan (sel de mer naturel, huile d'argan vierge, beurre de karité) · Crème à l'Argan Deltx (acide hyaluronique, vitamine E, aloe vera) · Huile d'Argan Bio 100% pure pressée à froid (Argania Spinosa, certifiée Bio).",
         priceWas: "31,30 €",
-        price: "31,99 €",
+        price: "28,00 €",
+        savings: "Économie : 3,30 €",
         badge: "Collection",
         description: "La Gamme Argan Complète est le rituel ultime pour les amoureux de l'huile d'argan. Réunissant les quatre étapes essentielles du soin — purifier, exfolier, hydrater, nourrir — cette collection offre un parcours beauté intégral, de la tête aux pieds, sublimé par l'or liquide du Maroc.",
         benefits: [
@@ -1152,7 +1334,7 @@
           "Idéal en coffret cadeau ou pour débuter une routine argan complète"
         ],
         usage: "Étape 1 – Purifier : utiliser quotidiennement le Savon Argan. Étape 2 – Exfolier : appliquer le Gommage Argan 2 à 3 fois par semaine sur peau humide. Étape 3 – Hydrater : appliquer la Crème Argan matin et/ou soir. Étape 4 – Nourrir : quelques gouttes d'Huile d'Argan le soir sur visage ou en soin capillaire sur les pointes.",
-        waText: "je souhaite commander la Gamme Argan Complète (31,99€)"
+        waText: "je souhaite commander la Gamme Argan Complète (28,00€)"
       }
     ];
 
@@ -1173,6 +1355,7 @@
               <div class="collection-pricing">
                 <div class="collection-price-was">${c.priceWas} (prix individuel)</div>
                 <div class="collection-price">${c.price}</div>
+                ${c.savings ? `<div class="collection-savings">${c.savings}</div>` : ''}
               </div>
               <a class="btn-whatsapp" href="${waLink(c.waText)}" target="_blank" rel="noopener noreferrer" aria-label="Commander ${c.name} sur WhatsApp">
                 ${WA_SVG} Commander
@@ -1196,7 +1379,7 @@
     /* ======== HERO TITLE ANIMATION ======== */
     const heroTitle = document.getElementById('heroTitle');
     let letterDelay = 0.6;
-    "Les jardins d'erin".split('').forEach(char => {
+    "Les jardins d'Erin".split('').forEach(char => {
       if (char === ' ') {
         const gap = document.createElement('span');
         gap.className = 'word-gap'; gap.setAttribute('aria-hidden','true');
