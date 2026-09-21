@@ -1541,6 +1541,20 @@
       products.unshift(huile);
     }
 
+    /* ---- Intercaler les produits épuisés parmi les disponibles ---- */
+    (function() {
+      const first = products[0]; // Best-seller reste en tête
+      const rest = products.slice(1);
+      const avail  = rest.filter(p => !p.soldOut);
+      const epuise = rest.filter(p =>  p.soldOut);
+      const step = Math.ceil(avail.length / (epuise.length + 1));
+      epuise.forEach((p, i) => {
+        const pos = Math.min((i + 1) * step + i, avail.length);
+        avail.splice(pos, 0, p);
+      });
+      products.splice(0, products.length, first, ...avail);
+    })();
+
     const productsGrid = document.getElementById('productsGrid');
     products.forEach((p, i) => {
       const delay = (i % 3) + 1;
