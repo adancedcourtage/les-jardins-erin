@@ -724,6 +724,37 @@
     .promo-popup-price { margin-bottom: 22px; }
     .promo-popup-price .new { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--rose-deep); }
     .promo-popup-price .old { font-size: 16px; color: var(--text-light); text-decoration: line-through; margin-left: 8px; }
+
+    /* ===== PROMO FUTURISTE ===== */
+    .promo-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(107,124,85,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(107,124,85,.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at 70% 50%, #000 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 50%, #000 0%, transparent 70%); pointer-events: none; animation: grid-drift 14s linear infinite; }
+    @keyframes grid-drift { to { background-position: 44px 44px; } }
+    .promo-section .container { position: relative; z-index: 1; }
+    @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .promo-feature { position: relative; isolation: isolate; }
+    .promo-feature::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: conic-gradient(from var(--ang), transparent 0deg, var(--rose-deep) 70deg, var(--gold) 140deg, #5ee7df 200deg, transparent 280deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: spin-ang 5s linear infinite; z-index: 3; pointer-events: none; }
+    @keyframes spin-ang { to { --ang: 360deg; } }
+    .promo-feature-badge { animation: badge-pulse 2s ease-in-out infinite; }
+    @keyframes badge-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(212,150,142,.6); } 50% { box-shadow: 0 0 0 12px rgba(212,150,142,0); } }
+    .promo-feature-new { position: relative; display: inline-block; background: linear-gradient(100deg, var(--rose-deep) 30%, #fff 50%, var(--rose-deep) 70%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: price-shine 3.2s ease-in-out infinite; }
+    @keyframes price-shine { 0% { background-position: 150% 0; } 60%,100% { background-position: -50% 0; } }
+    .promo-feature-body::before { content: ''; display: block; height: 2px; margin: -22px -24px 20px; background: linear-gradient(90deg, transparent, #5ee7df, transparent); background-size: 50% 100%; background-repeat: no-repeat; animation: scan 3s ease-in-out infinite; opacity: .8; }
+    @keyframes scan { 0% { background-position: -50% 0; } 100% { background-position: 150% 0; } }
+
+    .promo-countdown { background: linear-gradient(135deg, #0f1a14, #1b2b22); border-radius: var(--radius-md); padding: 16px 18px 18px; margin-bottom: 18px; position: relative; overflow: hidden; box-shadow: inset 0 0 30px rgba(94,231,223,.08); }
+    .promo-countdown::after { content: ''; position: absolute; left: 0; right: 0; height: 40%; top: -40%; background: linear-gradient(180deg, transparent, rgba(94,231,223,.10), transparent); animation: scanline 4s linear infinite; pointer-events: none; }
+    @keyframes scanline { to { top: 140%; } }
+    .promo-countdown-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #5ee7df; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .promo-countdown-label::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #5ee7df; box-shadow: 0 0 10px #5ee7df; animation: blink 1.2s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: .25; } }
+    .promo-countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .cd-cell { text-align: center; background: rgba(255,255,255,.04); border: 1px solid rgba(94,231,223,.22); border-radius: 10px; padding: 10px 4px 8px; }
+    .cd-num { display: block; font-family: 'Inter', ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 600; color: #e8fffd; text-shadow: 0 0 14px rgba(94,231,223,.7); line-height: 1.1; }
+    .cd-num.tick { animation: tick .35s ease; }
+    @keyframes tick { 0% { transform: translateY(-40%); opacity: 0; } 100% { transform: none; opacity: 1; } }
+    .cd-unit { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
+    .promo-popup-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: conic-gradient(from var(--ang), transparent 0deg, var(--rose-deep) 70deg, var(--gold) 140deg, #5ee7df 200deg, transparent 280deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: spin-ang 5s linear infinite; pointer-events: none; }
+    .promo-popup-end { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #1b8a84; margin: -10px 0 20px; font-weight: 600; }
+    @media (prefers-reduced-motion: reduce) { .promo-section::before, .promo-feature::before, .promo-popup-card::before, .promo-feature-badge, .promo-feature-new, .promo-feature-body::before, .promo-countdown::after, .promo-countdown-label::before, .cd-num.tick { animation: none !important; } .promo-feature-new { -webkit-text-fill-color: var(--rose-deep); background: none; } }
   </style>
 </head>
 
@@ -845,7 +876,15 @@
             <div class="promo-feature-body">
               <h3 class="promo-feature-name">Shampooing Argan</h3>
               <div class="promo-feature-prices"><span class="promo-feature-new">8,00 €</span><span class="promo-feature-old">9,90 €</span></div>
-              <p class="promo-feature-note">Prix promo du mois – offre limitée dans le temps</p>
+              <div class="promo-countdown" id="promoCountdown" role="timer" aria-label="Temps restant avant la fin de la promo">
+                <div class="promo-countdown-label">Fin de l'offre le 31 octobre</div>
+                <div class="promo-countdown-grid">
+                  <div class="cd-cell"><span class="cd-num" data-u="d">--</span><span class="cd-unit">jours</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-u="h">--</span><span class="cd-unit">heures</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-u="m">--</span><span class="cd-unit">min</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-u="s">--</span><span class="cd-unit">sec</span></div>
+                </div>
+              </div>
               <div class="promo-feature-actions">
                 <a class="promo-btn promo-btn-primary" id="promoWaBtn" href="#" target="_blank" rel="noopener noreferrer">Commander à 8,00 €</a>
                 <button type="button" class="promo-btn promo-btn-ghost" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))">Voir le produit</button>
@@ -1182,6 +1221,7 @@
       <p class="promo-popup-label">Promo du mois</p>
       <h2 class="promo-popup-title" id="promoPopupTitle">Chouchoutez vos cheveux</h2>
       <p class="promo-popup-sub">Shampooing à l'argan</p>
+      <p class="promo-popup-end">Jusqu'au 31 octobre</p>
       <p class="promo-popup-price"><span class="new">8,00 €</span><span class="old">9,90 €</span></p>
       <a class="promo-popup-cta" href="#promo" id="promoPopupCta">Découvrir</a>
     </div>
@@ -1613,6 +1653,36 @@
       });
       products.splice(0, products.length, first, ...avail);
     })();
+
+    /* ======== PROMO : fin le 31 octobre ======== */
+    const PROMO_END = new Date('2026-10-31T23:59:59+01:00').getTime();
+    const promoActive = Date.now() < PROMO_END;
+    if (!promoActive) {
+      const sh = products.find(p => p.name === 'Shampooing Argan');
+      if (sh) {
+        sh.price = sh.promoWas || '9,90 €'; delete sh.promoWas; sh.badge = null;
+        sh.waText = 'je souhaite commander le Shampooing Argan (9,90€)';
+      }
+      ['promo', 'promoPopup'].forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
+    } else {
+      const cd = document.getElementById('promoCountdown');
+      const cells = {};
+      cd.querySelectorAll('.cd-num').forEach(n => cells[n.dataset.u] = n);
+      const pad = n => String(n).padStart(2, '0');
+      function tickCd() {
+        let t = Math.max(0, PROMO_END - Date.now());
+        const v = { d: Math.floor(t / 864e5), h: Math.floor(t % 864e5 / 36e5), m: Math.floor(t % 36e5 / 6e4), s: Math.floor(t % 6e4 / 1e3) };
+        for (const k in v) {
+          const txt = pad(v[k]);
+          if (cells[k].textContent !== txt) {
+            cells[k].textContent = txt;
+            cells[k].classList.remove('tick'); void cells[k].offsetWidth; cells[k].classList.add('tick');
+          }
+        }
+        if (t === 0) location.reload();
+      }
+      tickCd(); setInterval(tickCd, 1000);
+    }
 
     const productsGrid = document.getElementById('productsGrid');
     products.forEach((p, i) => {
