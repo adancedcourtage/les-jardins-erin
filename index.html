@@ -697,9 +697,33 @@
     .promo-popup-close:hover { color: var(--text-dark); }
     .promo-popup-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--rose-deep); font-weight: 600; margin-bottom: 12px; }
     .promo-popup-title { font-family: var(--font-serif); font-size: 26px; color: var(--olive-dark); line-height: 1.25; margin-bottom: 10px; }
-    .promo-popup-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; }
+    .promo-popup-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 8px; }
     .promo-popup-cta { display: inline-block; background: var(--olive); color: #fff; font-size: 14px; font-weight: 600; padding: 13px 30px; border-radius: 50px; text-decoration: none; }
     .promo-popup-cta:hover { background: var(--olive-dark); }
+
+    .price-was { font-family: var(--font-sans); font-size: 13px; font-weight: 400; color: var(--text-light); text-decoration: line-through; margin-left: 4px; }
+    .promo-feature { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; position: relative; }
+    .promo-feature-badge { position: absolute; top: 16px; left: 16px; z-index: 2; background: var(--rose-deep); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 50px; letter-spacing: .5px; }
+    .promo-feature img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: pointer; }
+    .promo-feature-body { padding: 22px 24px 26px; }
+    .promo-feature-name { font-family: var(--font-serif); font-size: 24px; color: var(--text-dark); margin-bottom: 8px; }
+    .promo-feature-prices { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+    .promo-feature-new { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: var(--rose-deep); line-height: 1; }
+    .promo-feature-old { font-size: 18px; color: var(--text-light); text-decoration: line-through; }
+    .promo-feature-note { font-size: 12px; color: var(--text-light); margin-bottom: 18px; }
+    .promo-feature-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .promo-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 24px; border-radius: 50px; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; border: 1.5px solid var(--olive); font-family: inherit; }
+    .promo-btn-primary { background: var(--olive); color: #fff; }
+    .promo-btn-primary:hover { background: var(--olive-dark); }
+    .promo-btn-ghost { background: transparent; color: var(--olive-dark); }
+    .promo-btn-ghost:hover { background: var(--sage-light); }
+    .promo-also { display: flex; align-items: center; gap: 14px; margin-top: 16px; padding: 12px 16px; background: rgba(255,255,255,.7); border-radius: var(--radius-md); cursor: pointer; border: none; width: 100%; text-align: left; font-family: inherit; }
+    .promo-also img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; }
+    .promo-also-text { font-size: 13px; color: var(--text-mid); line-height: 1.4; }
+    .promo-also-text strong { display: block; color: var(--olive-dark); font-size: 14px; }
+    .promo-popup-price { margin-bottom: 22px; }
+    .promo-popup-price .new { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--rose-deep); }
+    .promo-popup-price .old { font-size: 16px; color: var(--text-light); text-decoration: line-through; margin-left: 8px; }
   </style>
 </head>
 
@@ -814,14 +838,23 @@
           <p class="promo-text">Soleil, chaleur, eau de mer ou de piscine… vos cheveux ont été mis à rude épreuve cet été. Profitez de la promo du mois pour les chouchouter et leur offrir confort, réparation et nutrition en un seul geste avec le <strong>shampooing à l'argan</strong>.</p>
           <p class="promo-text">Complétez avec la <strong>lotion aux extraits d'herbes</strong> pour une action renforcée.</p>
         </div>
-        <div class="promo-products reveal">
-          <button type="button" class="promo-card" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))" aria-label="Voir le Shampooing Argan">
-            <img src="images/shampooing-argan.jpg" alt="Shampooing Argan" loading="lazy" />
-            <div class="promo-card-body"><span class="promo-card-tag">Réparation</span><div class="promo-card-name">Shampooing Argan</div><div class="promo-card-price">9,90 €</div></div>
-          </button>
-          <button type="button" class="promo-card" onclick="openDetail(products.find(p=>p.name==='Extrait d\'Herbes Chojairate'))" aria-label="Voir la lotion Extrait d'Herbes">
-            <img src="images/choj-extrait-herbes.png" alt="Extrait d'Herbes Chojairate" loading="lazy" />
-            <div class="promo-card-body"><span class="promo-card-tag">Action renforcée</span><div class="promo-card-name">Extrait d'Herbes</div><div class="promo-card-price">10,00 €</div></div>
+        <div class="reveal">
+          <div class="promo-feature">
+            <span class="promo-feature-badge">-19%</span>
+            <img src="images/shampooing-argan.jpg" alt="Shampooing Argan" loading="lazy" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))" />
+            <div class="promo-feature-body">
+              <h3 class="promo-feature-name">Shampooing Argan</h3>
+              <div class="promo-feature-prices"><span class="promo-feature-new">8,00 €</span><span class="promo-feature-old">9,90 €</span></div>
+              <p class="promo-feature-note">Prix promo du mois – offre limitée dans le temps</p>
+              <div class="promo-feature-actions">
+                <a class="promo-btn promo-btn-primary" id="promoWaBtn" href="#" target="_blank" rel="noopener noreferrer">Commander à 8,00 €</a>
+                <button type="button" class="promo-btn promo-btn-ghost" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))">Voir le produit</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="promo-also" onclick="openDetail(products.find(p=>p.name==='Extrait d\'Herbes Chojairate'))" aria-label="Voir la lotion Extrait d'Herbes">
+            <img src="images/choj-extrait-herbes.png" alt="" loading="lazy" />
+            <span class="promo-also-text"><strong>À compléter avec la lotion aux extraits d'herbes</strong>Pour une action renforcée – 10,00 €</span>
           </button>
         </div>
       </div>
@@ -1148,7 +1181,8 @@
       <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Fermer">&times;</button>
       <p class="promo-popup-label">Promo du mois</p>
       <h2 class="promo-popup-title" id="promoPopupTitle">Chouchoutez vos cheveux</h2>
-      <p class="promo-popup-sub">Shampooing à l'argan + lotion aux extraits d'herbes.</p>
+      <p class="promo-popup-sub">Shampooing à l'argan</p>
+      <p class="promo-popup-price"><span class="new">8,00 €</span><span class="old">9,90 €</span></p>
       <a class="promo-popup-cta" href="#promo" id="promoPopupCta">Découvrir</a>
     </div>
   </div>
@@ -1256,14 +1290,14 @@
       },
       {
         name: "Shampooing Argan",
-        price: "9,90 €", category: "Soin Capillaire",
+        price: "8,00 €", promoWas: "9,90 €", category: "Soin Capillaire",
         tagline: "Derhum Professional – protéine + kératine, tous types de cheveux",
-        img: "images/shampooing-argan.jpg", badge: null,
+        img: "images/shampooing-argan.jpg", badge: "Promo -19%",
         description: "Le Shampooing Argan Derhum Professional est un soin capillaire enrichi en huile d'argan, protéines et kératine. Formulé pour tous les types de cheveux, il restaure la brillance, la douceur et la vitalité des cheveux abîmés ou ternes grâce à une synergie d'actifs réparateurs.",
         composition: "Huile d'Argan (Argania Spinosa), protéine de soie hydrolysée, kératine végétale, panthénol (Pro-vitamine B5), extraits de plantes nourrissants.",
         benefits: ["Restaure la brillance et la douceur des cheveux ternes","Renforce la fibre capillaire grâce à la kératine végétale","Nourrit en profondeur sans alourdir ni rendre gras","Convient à tous les types de cheveux, même colorés","Formule douce, sans parabènes ni sulfates agressifs"],
         usage: "Appliquer sur cheveux mouillés, masser le cuir chevelu et les longueurs. Laisser agir 2 minutes puis rincer abondamment. Utiliser régulièrement pour des résultats durables.",
-        waText: "je souhaite commander le Shampooing Argan (9,90€)"
+        waText: "je souhaite commander le Shampooing Argan (8,00€ au lieu de 9,90€ – promo du mois)"
       },
       {
         name: "Baume Réparateur",
@@ -1614,7 +1648,7 @@
             ${p.size ? `<span class="product-size">${p.size}</span>` : ''}
             <div class="product-footer">
               <div>
-                <div class="product-price">${p.soldOut ? '—' : p.price}</div>
+                <div class="product-price">${p.soldOut ? '—' : p.price}${p.promoWas && !p.soldOut ? ` <span class="price-was">${p.promoWas}</span>` : ''}</div>
                 <div class="product-price-unit">${p.soldOut ? 'indisponible' : 'unité'}</div>
               </div>
               ${ctaHTML}
@@ -1835,7 +1869,10 @@
       // Price
       document.getElementById('detailPriceMain').textContent = item.price;
       const priceWasEl = document.getElementById('detailPriceWas');
-      if (item.priceWas) {
+      if (item.promoWas) {
+        priceWasEl.textContent = item.promoWas + ' – promo du mois';
+        priceWasEl.hidden = false;
+      } else if (item.priceWas) {
         priceWasEl.textContent = item.priceWas + ' (prix individuel)';
         priceWasEl.hidden = false;
       } else {
@@ -1907,6 +1944,7 @@
       }
     });
     /* ======== PROMO POPUP ======== */
+    (function(){ const b = document.getElementById('promoWaBtn'); if (b) b.href = waLink('je souhaite commander le Shampooing Argan en promo (8,00€ au lieu de 9,90€)'); })();
     (function() {
       const pop = document.getElementById('promoPopup');
       if (!pop) return;
