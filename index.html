@@ -671,6 +671,35 @@
       .detail-info { padding: 28px 20px 56px; }
       .detail-name { font-size: 26px; }
     }
+
+    /* ===================== PROMO ===================== */
+    .promo-section { background: var(--cream-dark); padding: 88px 0; position: relative; overflow: hidden; }
+    .promo-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+    .promo-badge { display: inline-block; background: var(--rose-deep); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 18px; }
+    .promo-title { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 42px); color: var(--olive-dark); line-height: 1.2; margin-bottom: 18px; }
+    .promo-text { font-size: 16px; line-height: 1.8; color: var(--text-mid); margin-bottom: 14px; max-width: 520px; }
+    .promo-text strong { color: var(--olive-dark); }
+    .promo-products { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .promo-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; cursor: pointer; transition: transform .3s, box-shadow .3s; border: none; text-align: left; font-family: inherit; }
+    .promo-card:hover, .promo-card:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-gold); outline: none; }
+    .promo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .promo-card-body { padding: 16px 18px 20px; }
+    .promo-card-name { font-family: var(--font-serif); font-size: 17px; color: var(--text-dark); margin-bottom: 6px; }
+    .promo-card-price { font-size: 15px; font-weight: 600; color: var(--olive); }
+    .promo-card-tag { font-size: 11px; color: var(--gold-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; display: block; }
+    @media (max-width: 860px) { .promo-inner { grid-template-columns: 1fr; gap: 36px; } .promo-section { padding: 64px 0; } }
+
+    .promo-popup { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(45,40,32,0.55); backdrop-filter: blur(3px); }
+    .promo-popup.show { display: flex; animation: promo-fade .35s ease; }
+    @keyframes promo-fade { from { opacity: 0; } to { opacity: 1; } }
+    .promo-popup-card { position: relative; background: var(--cream); border-radius: var(--radius-lg); max-width: 380px; width: 100%; padding: 40px 32px 32px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+    .promo-popup-close { position: absolute; top: 12px; right: 14px; width: 44px; height: 44px; border: none; background: none; font-size: 26px; line-height: 1; color: var(--text-light); cursor: pointer; }
+    .promo-popup-close:hover { color: var(--text-dark); }
+    .promo-popup-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--rose-deep); font-weight: 600; margin-bottom: 12px; }
+    .promo-popup-title { font-family: var(--font-serif); font-size: 26px; color: var(--olive-dark); line-height: 1.25; margin-bottom: 10px; }
+    .promo-popup-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; }
+    .promo-popup-cta { display: inline-block; background: var(--olive); color: #fff; font-size: 14px; font-weight: 600; padding: 13px 30px; border-radius: 50px; text-decoration: none; }
+    .promo-popup-cta:hover { background: var(--olive-dark); }
   </style>
 </head>
 
@@ -774,6 +803,30 @@
       </div>
     </div>
   </div>
+
+  <!-- ======================== PROMO DU MOIS ======================== -->
+  <section class="promo-section" id="promo" aria-label="Promo du mois">
+    <div class="container">
+      <div class="promo-inner">
+        <div class="reveal">
+          <span class="promo-badge">Promo du mois</span>
+          <h2 class="promo-title">Rendez à vos cheveux leur éclat</h2>
+          <p class="promo-text">Soleil, chaleur, eau de mer ou de piscine… vos cheveux ont été mis à rude épreuve cet été. Profitez de la promo du mois pour les chouchouter et leur offrir confort, réparation et nutrition en un seul geste avec le <strong>shampooing à l'argan</strong>.</p>
+          <p class="promo-text">Complétez avec la <strong>lotion aux extraits d'herbes</strong> pour une action renforcée.</p>
+        </div>
+        <div class="promo-products reveal">
+          <button type="button" class="promo-card" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))" aria-label="Voir le Shampooing Argan">
+            <img src="images/shampooing-argan.jpg" alt="Shampooing Argan" loading="lazy" />
+            <div class="promo-card-body"><span class="promo-card-tag">Réparation</span><div class="promo-card-name">Shampooing Argan</div><div class="promo-card-price">9,90 €</div></div>
+          </button>
+          <button type="button" class="promo-card" onclick="openDetail(products.find(p=>p.name==='Extrait d\'Herbes Chojairate'))" aria-label="Voir la lotion Extrait d'Herbes">
+            <img src="images/choj-extrait-herbes.png" alt="Extrait d'Herbes Chojairate" loading="lazy" />
+            <div class="promo-card-body"><span class="promo-card-tag">Action renforcée</span><div class="promo-card-name">Extrait d'Herbes</div><div class="promo-card-price">10,00 €</div></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ======================== PRODUCTS ======================== -->
   <section class="products" id="produits" aria-label="Catalogue produits">
@@ -1090,6 +1143,16 @@
   </div>
 
   <!-- ======================== JS ======================== -->
+  <div class="promo-popup" id="promoPopup" role="dialog" aria-modal="true" aria-labelledby="promoPopupTitle" aria-hidden="true">
+    <div class="promo-popup-card">
+      <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Fermer">&times;</button>
+      <p class="promo-popup-label">Promo du mois</p>
+      <h2 class="promo-popup-title" id="promoPopupTitle">Chouchoutez vos cheveux</h2>
+      <p class="promo-popup-sub">Shampooing à l'argan + lotion aux extraits d'herbes.</p>
+      <a class="promo-popup-cta" href="#promo" id="promoPopupCta">Découvrir</a>
+    </div>
+  </div>
+
   <script>
     /* ======== SVG WhatsApp icon ======== */
     const WA_SVG = `<svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>`;
@@ -1843,6 +1906,23 @@
         document.body.style.overflow = '';
       }
     });
+    /* ======== PROMO POPUP ======== */
+    (function() {
+      const pop = document.getElementById('promoPopup');
+      if (!pop) return;
+      let seen = false;
+      try { seen = sessionStorage.getItem('promoSeen') === '1'; } catch (e) {}
+      function close() {
+        pop.classList.remove('show');
+        pop.setAttribute('aria-hidden', 'true');
+        try { sessionStorage.setItem('promoSeen', '1'); } catch (e) {}
+      }
+      document.getElementById('promoPopupClose').addEventListener('click', close);
+      document.getElementById('promoPopupCta').addEventListener('click', close);
+      pop.addEventListener('click', e => { if (e.target === pop) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && pop.classList.contains('show')) close(); });
+      if (!seen) setTimeout(() => { pop.classList.add('show'); pop.setAttribute('aria-hidden', 'false'); }, 1500);
+    })();
   </script>
 </body>
 </html>
