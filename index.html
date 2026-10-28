@@ -375,6 +375,30 @@
     .step-card h3 { font-family: var(--font-serif); font-size: 17px; color: var(--text-dark); margin-bottom: 8px; }
     .step-card p  { font-size: 13px; color: var(--text-light); line-height: 1.6; }
 
+    /* ===================== HALLOWEEN INSERT ===================== */
+    .halloween-insert { --pumpkin: #d9772b; background: linear-gradient(180deg, var(--rose-soft) 0%, var(--white) 100%); padding-bottom: 48px; }
+    .halloween-insert .section-header { margin-bottom: 48px; }
+    .halloween-wrap { max-width: 820px; margin: 0 auto; }
+    .halloween-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative; }
+    .halloween-photo { margin: 0; position: relative; background: var(--cream); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .halloween-photo:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(45,40,32,0.12); }
+    .halloween-photo img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .halloween-photo.wide { margin-top: 24px; }
+    .halloween-photo.wide img { aspect-ratio: 2/1; }
+    .halloween-tag { position: absolute; top: 14px; left: 14px; z-index: 1; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 14px; border-radius: 50px; box-shadow: 0 4px 14px rgba(45,40,32,0.20); }
+    .halloween-tag.before { background: rgba(45,40,32,0.82); color: var(--cream); }
+    .halloween-tag.after  { background: var(--olive-dark); color: var(--gold-light); }
+    .halloween-arrow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2; width: 48px; height: 48px; border-radius: 50%; background: var(--pumpkin); color: var(--white); border: 3px solid var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; box-shadow: var(--shadow-gold); pointer-events: none; }
+    @media (max-width: 600px) {
+      .halloween-insert .section-header { margin-bottom: 32px; }
+      .halloween-pair { gap: 12px; }
+      .halloween-photo { border-radius: var(--radius-md); }
+      .halloween-photo.wide { margin-top: 12px; }
+      .halloween-tag { top: 8px; left: 8px; font-size: 10px; letter-spacing: 1px; padding: 5px 10px; }
+      .halloween-arrow { width: 36px; height: 36px; font-size: 17px; border-width: 2px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .halloween-photo { transition: none; } .halloween-photo:hover { transform: none; } }
+
     /* ===================== TESTIMONIALS ===================== */
     .testimonials { background: var(--white); }
     .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
@@ -1058,6 +1082,35 @@
           <div class="step-icon" aria-hidden="true">🎁</div>
           <h3>Recevez</h3>
           <p>Vos soins vous sont livrés directement chez vous, soigneusement emballés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== HALLOWEEN ======================== -->
+  <section class="halloween-insert" id="halloween" aria-label="Clin d'œil Halloween">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Clin d'œil Halloween <span aria-hidden="true">🎃</span></span>
+        <h2 class="section-title">Elles ont testé, elles ont <em>adoré</em>.</h2>
+        <span class="gold-line" aria-hidden="true"></span>
+      </div>
+      <div class="halloween-wrap">
+        <div class="halloween-pair reveal reveal-delay-1">
+          <figure class="halloween-photo">
+            <span class="halloween-tag before" aria-hidden="true">Avant</span>
+            <img src="images/halloween-avant.webp" alt="Avant : déguisée en sorcière pour Halloween" loading="lazy" width="768" height="1024" />
+          </figure>
+          <span class="halloween-arrow" aria-hidden="true">→</span>
+          <figure class="halloween-photo">
+            <span class="halloween-tag after" aria-hidden="true">Après</span>
+            <img src="images/halloween-apres.webp" alt="Après : transformée en reine" loading="lazy" width="768" height="1024" />
+          </figure>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <figure class="halloween-photo wide">
+            <img src="images/halloween-sourire.webp" alt="Avant / après : déguisée en sorcière, d'un léger sourire à un grand sourire" loading="lazy" width="900" height="450" />
+          </figure>
         </div>
       </div>
     </div>
