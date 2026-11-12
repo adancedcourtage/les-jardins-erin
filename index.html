@@ -748,6 +748,19 @@
     .promo-popup-price { margin-bottom: 22px; }
     .promo-popup-price .new { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--rose-deep); }
     .promo-popup-price .old { font-size: 16px; color: var(--text-light); text-decoration: line-through; margin-left: 8px; }
+    .promo-feature-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .promo-feature-top .promo-feature-name { margin-bottom: 0; }
+    .promo-feature-top .promo-feature-badge { position: static; flex-shrink: 0; }
+    .promo-list { display: grid; gap: 10px; margin-bottom: 18px; }
+    .promo-item { display: grid; grid-template-columns: 60px 1fr auto; align-items: center; gap: 14px; width: 100%; padding: 10px 14px 10px 10px; background: var(--cream); border: 1px solid var(--border); border-radius: var(--radius-md); cursor: pointer; text-align: left; font-family: inherit; transition: transform .25s, box-shadow .25s, border-color .25s; }
+    .promo-item:hover, .promo-item:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow-card); border-color: var(--sage); outline: none; }
+    .promo-feature .promo-item img { width: 60px; height: 60px; aspect-ratio: auto; border-radius: 10px; object-fit: cover; cursor: inherit; }
+    .promo-item-name { display: block; font-family: var(--font-serif); font-size: 16px; color: var(--text-dark); line-height: 1.25; }
+    .promo-item-size { display: block; font-size: 11px; color: var(--gold-dark); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+    .promo-item-prices { text-align: right; white-space: nowrap; }
+    .promo-item-new { display: block; font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--rose-deep); line-height: 1.1; }
+    .promo-item-old { font-size: 13px; color: var(--text-light); text-decoration: line-through; }
+    @media (max-width: 420px) { .promo-item { grid-template-columns: 48px 1fr auto; gap: 10px; } .promo-feature .promo-item img { width: 48px; height: 48px; } .promo-item-new { font-size: 19px; } }
 
     /* ===== PROMO FUTURISTE ===== */
     .promo-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(107,124,85,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(107,124,85,.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at 70% 50%, #000 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 50%, #000 0%, transparent 70%); pointer-events: none; animation: grid-drift 14s linear infinite; }
@@ -890,26 +903,48 @@
     </div>
   </div>
 
-  <!-- ======================== PROMO DU MOIS ======================== -->
-  <section class="promo-section" id="promo" aria-label="Promo du mois">
+  <!-- ======================== PROMO 15/11 → 15/12 ======================== -->
+  <section class="promo-section" id="promo" aria-label="Promo huiles précieuses">
     <div class="container">
       <div class="promo-inner">
         <div class="reveal">
-          <span class="promo-badge">Promo du mois</span>
-          <h2 class="promo-title">Rendez à vos cheveux leur éclat</h2>
-          <p class="promo-text">Soleil, chaleur, eau de mer ou de piscine… vos cheveux ont été mis à rude épreuve cet été. Profitez de la promo du mois pour les chouchouter et leur offrir confort, réparation et nutrition en un seul geste avec le <strong>shampooing à l'argan</strong>.</p>
-          <p class="promo-text">Complétez avec la <strong>lotion aux extraits d'herbes</strong> pour une action renforcée.</p>
+          <span class="promo-badge">Promo du 15 novembre au 15 décembre</span>
+          <h2 class="promo-title">Nos huiles précieuses à prix doux</h2>
+          <p class="promo-text">Du <strong>15 novembre au 15 décembre</strong>, profitez de prix réduits sur l'<strong>huile de nigelle</strong> et sur nos <strong>huiles d'argan</strong> en 100 ml, 125 ml et 250 ml.</p>
+          <p class="promo-text">Cliquez sur un produit pour découvrir sa fiche, puis commandez-le directement sur WhatsApp au prix promo.</p>
         </div>
         <div class="reveal">
           <div class="promo-feature">
-            <span class="promo-feature-badge">-19%</span>
-            <img src="images/shampooing-argan.jpg" alt="Shampooing Argan" loading="lazy" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))" />
             <div class="promo-feature-body">
-              <h3 class="promo-feature-name">Shampooing Argan</h3>
-              <div class="promo-feature-prices"><span class="promo-feature-new">8,00 €</span><span class="promo-feature-old">9,90 €</span></div>
+              <div class="promo-feature-top">
+                <h3 class="promo-feature-name">Nigelle &amp; Argan</h3>
+                <span class="promo-feature-badge">-10%</span>
+              </div>
+              <div class="promo-list">
+                <button type="button" class="promo-item" onclick="openDetail(products.find(p=>p.name==='Huile de Nigelle Chojairate'))">
+                  <img src="images/choj-huile-nigelle.png" alt="" loading="lazy" />
+                  <span><span class="promo-item-name">Huile de Nigelle</span><span class="promo-item-size">30 ml</span></span>
+                  <span class="promo-item-prices"><span class="promo-item-new">8,20 €</span><span class="promo-item-old">9,10 €</span></span>
+                </button>
+                <button type="button" class="promo-item" onclick="openDetail(products.find(p=>p.name==='Huile d\'Argane Bio 100ml'))">
+                  <img src="images/huile-argan-bio-100ml.webp" alt="" loading="lazy" />
+                  <span><span class="promo-item-name">Huile d'Argan Bio</span><span class="promo-item-size">100 ml</span></span>
+                  <span class="promo-item-prices"><span class="promo-item-new">8,60 €</span><span class="promo-item-old">9,60 €</span></span>
+                </button>
+                <button type="button" class="promo-item" onclick="openDetail(products.find(p=>p.name==='Huile d\'Argan'))">
+                  <img src="images/huile-argan.jpg" alt="" loading="lazy" />
+                  <span><span class="promo-item-name">Huile d'Argan</span><span class="promo-item-size">125 ml</span></span>
+                  <span class="promo-item-prices"><span class="promo-item-new">10,80 €</span><span class="promo-item-old">12,00 €</span></span>
+                </button>
+                <button type="button" class="promo-item" onclick="openDetail(products.find(p=>p.name==='Huile d\'Argan 250ml'))">
+                  <img src="images/huile-argan-250.jpg" alt="" loading="lazy" />
+                  <span><span class="promo-item-name">Huile d'Argan</span><span class="promo-item-size">250 ml</span></span>
+                  <span class="promo-item-prices"><span class="promo-item-new">21,10 €</span><span class="promo-item-old">23,50 €</span></span>
+                </button>
+              </div>
               <div class="promo-countdown" id="promoCountdown" role="timer" aria-label="Temps restant avant la fin de la promo">
                 <svg class="cd-vine" viewBox="0 0 400 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path class="vine-path" d="M0 17.0 Q25.0 24.0 50.0 17.0 Q75.0 10.0 100.0 17.0 Q125.0 24.0 150.0 17.0 Q175.0 10.0 200.0 17.0 Q225.0 24.0 250.0 17.0 Q275.0 10.0 300.0 17.0 Q325.0 24.0 350.0 17.0 Q375.0 10.0 400.0 17.0" fill="none" stroke="#6b7c55" stroke-width="2.2" stroke-linecap="round" pathLength="1"/><g transform="translate(19.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:0.0s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(29.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:0.3s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(69.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:0.7s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(79.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:1.0s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(119.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:1.4s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(129.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:1.8s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(169.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:2.1s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(179.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:2.4s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(219.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:2.8s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(229.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:3.1s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(269.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:3.5s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(279.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:3.8s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(319.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:4.2s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(329.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:4.5s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(369.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:4.9s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(379.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:5.2s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g></svg>
-                <div class="promo-countdown-label">Offre jusqu'au 31 octobre</div>
+                <div class="promo-countdown-label">Offre jusqu'au 15 décembre</div>
                 <div class="promo-countdown-grid">
                   <div class="cd-cell"><span class="cd-ring"><svg class="cd-wreath" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="37" fill="none" stroke="#6b7c55" stroke-width="1.8" stroke-dasharray="1 0"/><g transform="rotate(0) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:0.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(30) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:0.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(60) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:0.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(90) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:0.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(120) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:1.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(150) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:1.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(180) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:1.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(210) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:1.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(240) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:2.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(270) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:2.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(300) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:2.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(330) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:2.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(20) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g><g transform="rotate(140) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g><g transform="rotate(260) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g></svg><span class="cd-num" data-u="d">--</span></span><span class="cd-unit">jours</span></div>
                   <div class="cd-cell"><span class="cd-ring"><svg class="cd-wreath rev" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="37" fill="none" stroke="#6b7c55" stroke-width="1.8" stroke-dasharray="1 0"/><g transform="rotate(0) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:0.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(30) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:0.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(60) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:0.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(90) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:0.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(120) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:1.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(150) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:1.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(180) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:1.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(210) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:1.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(240) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:2.00s" fill="#6b7c55" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(270) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:2.25s" fill="#8a9e6a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(300) translate(37 0)"><g transform="rotate(38)"><path class="lf" style="animation-delay:2.50s" fill="#a8b89a" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(330) translate(37 0)"><g transform="rotate(-38)"><path class="lf" style="animation-delay:2.75s" fill="#4a5740" d="M0 0C3-6 11-6 15 0C11 6 3 6 0 0Z"/></g></g><g transform="rotate(20) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g><g transform="rotate(140) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g><g transform="rotate(260) translate(37 0)"><circle r="2.6" fill="#e8c4c0"/><circle r="1" fill="#c9a96e"/></g></svg><span class="cd-num" data-u="h">--</span></span><span class="cd-unit">heures</span></div>
@@ -919,15 +954,11 @@
                 <svg class="cd-vine" viewBox="0 0 400 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path class="vine-path" d="M0 17.0 Q25.0 24.0 50.0 17.0 Q75.0 10.0 100.0 17.0 Q125.0 24.0 150.0 17.0 Q175.0 10.0 200.0 17.0 Q225.0 24.0 250.0 17.0 Q275.0 10.0 300.0 17.0 Q325.0 24.0 350.0 17.0 Q375.0 10.0 400.0 17.0" fill="none" stroke="#6b7c55" stroke-width="2.2" stroke-linecap="round" pathLength="1"/><g transform="translate(19.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:0.0s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(29.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:0.3s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(69.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:0.7s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(79.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:1.0s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(119.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:1.4s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(129.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:1.8s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(169.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:2.1s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(179.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:2.4s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(219.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:2.8s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(229.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:3.1s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(269.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:3.5s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(279.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:3.8s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(319.0 20.5) rotate(-50) scale(1.0)"><path class="lf" style="animation-delay:4.2s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(329.0 20.5) rotate(-130) scale(0.85)"><path class="lf" style="animation-delay:4.5s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(369.0 13.5) rotate(50) scale(1.0)"><path class="lf" style="animation-delay:4.9s" fill="#a8b89a" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g><g transform="translate(379.0 13.5) rotate(130) scale(0.85)"><path class="lf" style="animation-delay:5.2s" fill="#6b7c55" d="M0 0C5-9 17-9 24 0C17 9 5 9 0 0Z"/><path d="M2 0H20" stroke="rgba(255,255,255,.35)" stroke-width=".8" fill="none"/></g></svg>
               </div>
               <div class="promo-feature-actions">
-                <a class="promo-btn promo-btn-primary" id="promoWaBtn" href="#" target="_blank" rel="noopener noreferrer">Commander à 8,00 €</a>
-                <button type="button" class="promo-btn promo-btn-ghost" onclick="openDetail(products.find(p=>p.name==='Shampooing Argan'))">Voir le produit</button>
+                <a class="promo-btn promo-btn-primary" id="promoWaBtn" href="#" target="_blank" rel="noopener noreferrer">Commander en promo</a>
+                <a class="promo-btn promo-btn-ghost" href="#produits">Voir la boutique</a>
               </div>
             </div>
           </div>
-          <button type="button" class="promo-also" onclick="openDetail(products.find(p=>p.name==='Extrait d\'Herbes Chojairate'))" aria-label="Voir la lotion Extrait d'Herbes">
-            <img src="images/choj-extrait-herbes.png" alt="" loading="lazy" />
-            <span class="promo-also-text"><strong>À compléter avec la lotion aux extraits d'herbes</strong>Pour une action renforcée – 10,00 €</span>
-          </button>
         </div>
       </div>
     </div>
@@ -1280,11 +1311,11 @@
   <div class="promo-popup" id="promoPopup" role="dialog" aria-modal="true" aria-labelledby="promoPopupTitle" aria-hidden="true">
     <div class="promo-popup-card">
       <button type="button" class="promo-popup-close" id="promoPopupClose" aria-label="Fermer">&times;</button>
-      <p class="promo-popup-label">Promo du mois</p>
-      <h2 class="promo-popup-title" id="promoPopupTitle">Chouchoutez vos cheveux</h2>
-      <p class="promo-popup-sub">Shampooing à l'argan</p>
-      <p class="promo-popup-end">Jusqu'au 31 octobre</p>
-      <p class="promo-popup-price"><span class="new">8,00 €</span><span class="old">9,90 €</span></p>
+      <p class="promo-popup-label">Promo huiles précieuses</p>
+      <h2 class="promo-popup-title" id="promoPopupTitle">Nigelle &amp; Argan à prix doux</h2>
+      <p class="promo-popup-sub">Huile de nigelle et huiles d'argan 100 ml, 125 ml et 250 ml</p>
+      <p class="promo-popup-end">Du 15 novembre au 15 décembre</p>
+      <p class="promo-popup-price"><span class="new">-10%</span></p>
       <a class="promo-popup-cta" href="#promo" id="promoPopupCta">Découvrir</a>
     </div>
   </div>
@@ -1392,14 +1423,14 @@
       },
       {
         name: "Shampooing Argan",
-        price: "8,00 €", promoWas: "9,90 €", category: "Soin Capillaire",
+        price: "9,90 €", category: "Soin Capillaire",
         tagline: "Derhum Professional – protéine + kératine, tous types de cheveux",
-        img: "images/shampooing-argan.jpg", badge: "Promo -19%",
+        img: "images/shampooing-argan.jpg", badge: null,
         description: "Le Shampooing Argan Derhum Professional est un soin capillaire enrichi en huile d'argan, protéines et kératine. Formulé pour tous les types de cheveux, il restaure la brillance, la douceur et la vitalité des cheveux abîmés ou ternes grâce à une synergie d'actifs réparateurs.",
         composition: "Huile d'Argan (Argania Spinosa), protéine de soie hydrolysée, kératine végétale, panthénol (Pro-vitamine B5), extraits de plantes nourrissants.",
         benefits: ["Restaure la brillance et la douceur des cheveux ternes","Renforce la fibre capillaire grâce à la kératine végétale","Nourrit en profondeur sans alourdir ni rendre gras","Convient à tous les types de cheveux, même colorés","Formule douce, sans parabènes ni sulfates agressifs"],
         usage: "Appliquer sur cheveux mouillés, masser le cuir chevelu et les longueurs. Laisser agir 2 minutes puis rincer abondamment. Utiliser régulièrement pour des résultats durables.",
-        waText: "je souhaite commander le Shampooing Argan (8,00€ au lieu de 9,90€ – promo du mois)"
+        waText: "je souhaite commander le Shampooing Argan (9,90€)"
       },
       {
         name: "Baume Réparateur",
@@ -1598,7 +1629,7 @@
         composition: "100% Huile de Nigelle (Nigella Sativa) pressée à froid, non raffinée.",
         benefits: ["Purifiante et anti-inflammatoire","Réduit impuretés et points noirs","Nourrit et renforce les cheveux","Multi-usages : visage, corps, ongles"],
         usage: "Visage : quelques gouttes le soir sur peau propre. Cheveux : masser cuir chevelu, laisser 30 min avant shampooing.",
-        waText: "je souhaite commander l'Huile de Nigelle Chojairate (10,00€)"
+        waText: "je souhaite commander l'Huile de Nigelle Chojairate (9,10€)"
       },
       {
         name: "Huile Essentielle Menthe Poivrée",
@@ -1666,7 +1697,7 @@
       "Huile de Nigelle":   "Format 30ml",
       "Crème de Rose":      "Format 100ml",
       "Savon à l'Argan":    "Format 100g",
-      "Huile d'Argan":      "Format 100ml",
+      "Huile d'Argan":      "Format 125ml",
       "Shampooing Argan":   "Format 500ml",
       "Baume Réparateur":          "Format 20g",
       "Masque à l'Argan":          "Format 200g",
@@ -1716,17 +1747,25 @@
       products.splice(0, products.length, first, ...avail);
     })();
 
-    /* ======== PROMO : fin le 31 octobre ======== */
-    const PROMO_END = new Date('2026-10-31T23:59:59+01:00').getTime();
-    const promoActive = Date.now() < PROMO_END;
+    /* ======== PROMO : du 15 novembre au 15 décembre inclus ======== */
+    const PROMO_START = new Date('2026-11-15T00:00:00+01:00').getTime();
+    const PROMO_END = new Date('2026-12-15T23:59:59+01:00').getTime();
+    const PROMO_ITEMS = {
+      "Huile de Nigelle Chojairate": { price: "8,20 €", waText: "je souhaite commander l'Huile de Nigelle Chojairate (8,20€ au lieu de 9,10€ – promo)" },
+      "Huile d'Argane Bio 100ml":    { price: "8,60 €", waText: "je souhaite commander l'Huile d'Argane Bio 100ml (8,60€ au lieu de 9,60€ – promo)" },
+      "Huile d'Argan":               { price: "10,80 €", waText: "je souhaite commander l'Huile d'Argan 125ml (10,80€ au lieu de 12,00€ – promo)" },
+      "Huile d'Argan 250ml":         { price: "21,10 €", waText: "je souhaite commander l'Huile d'Argan 250ml (21,10€ au lieu de 23,50€ – promo)" }
+    };
+    const promoActive = Date.now() >= PROMO_START && Date.now() < PROMO_END;
     if (!promoActive) {
-      const sh = products.find(p => p.name === 'Shampooing Argan');
-      if (sh) {
-        sh.price = sh.promoWas || '9,90 €'; delete sh.promoWas; sh.badge = null;
-        sh.waText = 'je souhaite commander le Shampooing Argan (9,90€)';
-      }
       ['promo', 'promoPopup'].forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
     } else {
+      products.forEach(p => {
+        const promo = PROMO_ITEMS[p.name];
+        if (!promo) return;
+        p.promoWas = p.price; p.price = promo.price;
+        p.badge = 'Promo -10%'; p.waText = promo.waText;
+      });
       const cd = document.getElementById('promoCountdown');
       const cells = {};
       cd.querySelectorAll('.cd-num').forEach(n => cells[n.dataset.u] = n);
@@ -2002,7 +2041,7 @@
       document.getElementById('detailPriceMain').textContent = item.price;
       const priceWasEl = document.getElementById('detailPriceWas');
       if (item.promoWas) {
-        priceWasEl.textContent = item.promoWas + ' – promo du mois';
+        priceWasEl.textContent = item.promoWas;
         priceWasEl.hidden = false;
       } else if (item.priceWas) {
         priceWasEl.textContent = item.priceWas + ' (prix individuel)';
@@ -2076,7 +2115,7 @@
       }
     });
     /* ======== PROMO POPUP ======== */
-    (function(){ const b = document.getElementById('promoWaBtn'); if (b) b.href = waLink('je souhaite commander le Shampooing Argan en promo (8,00€ au lieu de 9,90€)'); })();
+    (function(){ const b = document.getElementById('promoWaBtn'); if (b) b.href = waLink('je souhaite profiter de la promo huiles (du 15/11 au 15/12) : Huile de Nigelle 8,20€, Huile d\'Argan 100ml 8,60€, 125ml 10,80€ ou 250ml 21,10€'); })();
     (function() {
       const pop = document.getElementById('promoPopup');
       if (!pop) return;
