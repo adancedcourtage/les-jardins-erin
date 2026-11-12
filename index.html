@@ -918,7 +918,7 @@
             <div class="promo-feature-body">
               <div class="promo-feature-top">
                 <h3 class="promo-feature-name">Nigelle &amp; Argan</h3>
-                <span class="promo-feature-badge">-10%</span>
+                <span class="promo-feature-badge">Promo</span>
               </div>
               <div class="promo-list">
                 <button type="button" class="promo-item" onclick="openDetail(products.find(p=>p.name==='Huile de Nigelle Chojairate'))">
@@ -1315,7 +1315,7 @@
       <h2 class="promo-popup-title" id="promoPopupTitle">Nigelle &amp; Argan à prix doux</h2>
       <p class="promo-popup-sub">Huile de nigelle et huiles d'argan 100 ml, 125 ml et 250 ml</p>
       <p class="promo-popup-end">Du 15 novembre au 15 décembre</p>
-      <p class="promo-popup-price"><span class="new">-10%</span></p>
+      <p class="promo-popup-price"><span class="new">Dès 8,20 €</span></p>
       <a class="promo-popup-cta" href="#promo" id="promoPopupCta">Découvrir</a>
     </div>
   </div>
@@ -1764,7 +1764,7 @@
         const promo = PROMO_ITEMS[p.name];
         if (!promo) return;
         p.promoWas = p.price; p.price = promo.price;
-        p.badge = 'Promo -10%'; p.waText = promo.waText;
+        p.badge = 'Promo'; p.waText = promo.waText;
       });
       const cd = document.getElementById('promoCountdown');
       const cells = {};
